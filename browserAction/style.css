@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+
+:root {
+  --dark-color: #2c2c2c;
+  --white: white;
+  --active: #2596be;
+}
+
+.dark-mode {
+  --dark-color: white;
+  --white: #2c2c2c;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background-color: var(--white);
+  color: var(--dark-color);
+  width: 20rem;
+  min-height: 25rem;
+  border: 0.5rem solid blue;
+}
+
+.wrapper {
+  display: grid;
+  justify-content: center;
+  margin: 0.5rem;
+}
+
+.image-container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  width: 17rem;
+  height: 17rem;
+  border: 0.2rem solid var(--dark-color);
+}
+
+.image-gallery {
+  display: flex;
+  border: 0.2rem solid blue;
+  margin-top: 1rem;
+  /* width: 2rem;
+  height: 2reml; */
+}
+
+.image-upload {
+  opacity: 0;
+  width: 6rem;
+  height: 6rem;
+  cursor: pointer;
+}
+
+.add-image {
+  position: relative;
+  width: 6rem;
+  height: 6rem;
+  border: 0.1rem solid var(--dark-color);
+  cursor: pointer;
+}
+
+.add-image:hover {
+  opacity: 75%;
+}
+
+.add-image:active {
+  border: 0.1rem solid var(--active);
+}
+
+/* .image-upload:focus {
+  opacity: 0.5;
+  border: 0.2rem solid var(--active);
+} currently shows the input field */
+
+.add-image::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: /*2.5rem*/ calc(
+    (6rem - 0.25rem) / 2
+  ); /*height of the container minus the height of the psueudo element, divided by two, to place it in the middle.*/
+  left: /*1.5rem*/ calc((6rem - 3rem) / 2);
+  background-color: var(--dark-color);
+  width: 3rem;
+  height: 0.25rem;
+}
+
+.add-image::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: /*1.5rem*/ calc((6rem - 3rem) / 2);
+  left: /*2.5rem*/ calc((6rem - 0.25rem) / 2);
+  background-color: var(--dark-color);
+  width: 0.25rem;
+  height: 3rem;
+}
+
+.image-gallery .add-image {
+}
