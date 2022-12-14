@@ -190,6 +190,86 @@ figcaption {
   opacity: 0.8;
 }
 
+.frame-none {
+  border: none;
+}
+
+.frame-shadow {
+  filter: drop-shadow(0.4rem 0.4rem 0 var(--dark-color));
+  border: none;
+}
+
+.image-gallery .frame-shadow {
+  filter: drop-shadow(0.2rem 0.2rem 0 var(--dark-color));
+  border: none;
+}
+
+.frame-image {
+  border: 0.5rem solid;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-image-source: url("https://upload.wikimedia.org/wikipedia/commons/0/00/Georges_Pierre_Seurat_-_View_of_Le_Crotoy_from_Upstream_-_70.183_-_Detroit_Institute_of_Arts.jpg");
+  border-image-slice: 277 272 283 286;
+  border-image-width: 0.5rem;
+  border-image-outset: 0px 0px 0px 0px;
+  border-image-repeat: stretch stretch;
+}
+
+.image-gallery .frame-image {
+  border: 0.4rem solid;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-image-source: url("https://upload.wikimedia.org/wikipedia/commons/0/00/Georges_Pierre_Seurat_-_View_of_Le_Crotoy_from_Upstream_-_70.183_-_Detroit_Institute_of_Arts.jpg");
+  border-image-slice: 277 272 283 286;
+  border-image-width: 0.5rem;
+  border-image-outset: 0px 0px 0px 0px;
+  border-image-repeat: stretch stretch;
+}
+
+.frame-polaroid {
+  border: none;
+  outline: 0.5rem solid var(--dark-color);
+}
+
+.frame-polaroid-caption {
+  outline: 0.5rem solid var(--dark-color);
+  background-color: var(--dark-color);
+  color: var(--white);
+}
+
+.frame-polaroid-caption figcaption::after {
+  content: "";
+  background: linear-gradient(
+    to right,
+    var(--text-fade),
+    var(--dark-color) 50%
+  );
+}
+
+.frame-polaroid-caption .edit-img {
+  border-bottom: 0.1rem solid var(--white);
+  position: relative;
+  z-index: 1;
+}
+
+.image-gallery .frame-polaroid {
+  border: none;
+  outline: 0.2rem solid var(--dark-color);
+  margin-top: 0.2rem; //to fix the spacing after adding the outline, which doesn't move things around like a border
+}
+
+.image-gallery .frame-polaroid-caption {
+  outline: 0.2rem solid var(--dark-color);
+  background-color: var(--dark-color);
+  color: var(--white);
+}
+
 hr {
   background-color: var(--secondary);
   width: 8rem;
@@ -260,6 +340,49 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.frame-corner:after {
+  /*in combination with frame-none*/
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 2.5rem 2.5rem;
+  border-color: transparent transparent var(--dark-color) transparent;
+  /* border-radius: 0.5rem; */
+  border-bottom-right-radius: 0.12rem;
+  position: absolute;
+  bottom: -0.15rem;
+  right: -0.15rem;
+}
+
+/* .frame-corner:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 1.5rem 1.5rem;
+  border-color: transparent transparent var(--active) transparent;
+  border-bottom-right-radius: 0.2rem;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 1;
+} */
+
+.image-gallery .frame-corner:after {
+  /*in combination with frame-none*/
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 1.5rem 1.5rem;
+  border-color: transparent transparent var(--dark-color) transparent;
+  border-bottom-right-radius: 0.2rem;
+  position: absolute;
+  bottom: -0.1rem;
+  right: -0.1rem;
 }
 
 /* .select-image-container:after {
