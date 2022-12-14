@@ -1,11 +1,471 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="style.css" rel="stylesheet" />
   </head>
-  <body>
-    <h1 id="myHeading">My content</h1>
+  <body class="dark-modeNOT">
+    <main class="options">
+      <section class="theme-section">
+        <h3>Theme</h3>
+        <form name="themeForm" action="" class="theme-form">
+          <label for="light_theme" class="theme-option">
+            <div class="image-container">
+              <img
+                src="assets/light-mode-example.png"
+                alt=""
+                class="theme-example"
+              />
+            </div>
+            <div class="input-container">
+              <input type="radio" name="theme" id="light_theme" value="light" />
+              <span class="theme-name">Light</span>
+            </div>
+          </label>
+
+          <label for="dark_theme" class="theme-option">
+            <div class="image-container">
+              <img
+                src="assets/dark-mode-example.png"
+                alt=""
+                class="theme-example"
+              />
+            </div>
+            <div class="input-container">
+              <input type="radio" name="theme" id="dark_theme" value="dark" />
+              <span class="theme-name">Dark</span>
+            </div>
+          </label>
+
+          <label for="custom_theme" class="theme-option">
+            <div class="image-container">
+              <img
+                src="assets/custom-example.png"
+                alt=""
+                class="theme-example"
+              />
+            </div>
+            <div class="input-container">
+              <input
+                type="radio"
+                name="theme"
+                id="custom_theme"
+                value="custom"
+              />
+              <span class="theme-name">Custom</span>
+            </div>
+          </label>
+        </form>
+      </section>
+      <!-- <p>After selecting "custom"</p> -->
+      <section class="custom-theme-wrapper">
+        <form action="" class="color-form" name="colorForm">
+          <label for="custom_theme_background_color" class="color-option">
+            <div class="color-container">
+              <input
+                type="color"
+                name="custom_theme_background_color"
+                id="custom_theme_background_color"
+                value="#84a1eb"
+              />
+              <div class="color-info">
+                <span class="color-title">Background color:</span>
+                <br />
+                <span class="color-code">#85a0eb</span>
+              </div>
+            </div>
+          </label>
+          <label for="custom_theme_accent_color" class="color-option">
+            <div class="color-container">
+              <input
+                type="color"
+                name="custom_theme_accent_color"
+                id="custom_theme_accent_color"
+              />
+              <div class="color-info">
+                <span class="color-title">Accent color:</span>
+                <span class="color-code">#000000</span>
+              </div>
+            </div>
+          </label>
+          <button class="color-btn">Apply Theme</button>
+        </form>
+        <div class="theme-preview">
+          <div class="frame"></div>
+        </div>
+        <div class="swatches">
+          <form action="">
+            <input type="radio" name="" id="" class="color-swatch" value="" />
+            <input type="radio" name="" id="" class="color-swatch" value="" />
+            <input type="radio" name="" id="" class="color-swatch" value="" />
+            <input type="radio" name="" id="" class="color-swatch" value="" />
+            <p>+ a button to invert the colors</p>
+            <p>
+              The colour swatches could instead have options to include
+              gradients, brushstrokes, and other kinds of filters to the
+              background
+            </p>
+          </form>
+        </div>
+      </section>
+
+      <!-- <br /><br /><br /> -->
+      <!-- <label for="theme">Theme</label>
+      <select name="" id="">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+        <option value="custom">Custom</option>
+      </select> -->
+      <section class="font-container">
+        <h3>Font</h3>
+        <form name="fontForm" action="" class="theme-form font-section">
+          <label for="font_inter" class="theme-option font-option">
+            <div class="font-example font-inter">
+              <h1 class="font-letter">F</h1>
+              <p>Font Preview</p>
+            </div>
+            <div class="input-container">
+              <input type="radio" name="font" id="font_inter" value="Inter" />
+              <span class="theme-name">Inter</span>
+            </div>
+          </label>
+          <label for="font_special_elite" class="theme-option font-option">
+            <div class="font-example font-special-elite">
+              <h1 class="font-letter">F</h1>
+              <p>Font Preview</p>
+            </div>
+            <div class="input-container">
+              <input
+                type="radio"
+                name="font"
+                id="font_special_elite"
+                value="special-elite"
+              />
+              <span class="theme-name">Special Elite</span>
+            </div>
+          </label>
+          <label for="font_cbyg" class="theme-option font-option">
+            <div class="font-example font-cbyg">
+              <h1 class="font-letter">F</h1>
+              <p>Font Preview</p>
+            </div>
+            <div class="input-container">
+              <input type="radio" name="font" id="font_cbyg" value="cbyg" />
+              <span class="theme-name"
+                ><abbr title="Covered By Your Grace">CBYG</abbr></span
+              >
+            </div>
+          </label>
+          <label for="font_merri" class="theme-option font-option">
+            <div class="font-example font-merri">
+              <h1 class="font-letter">F</h1>
+              <p>Font Preview</p>
+            </div>
+            <div class="input-container">
+              <input type="radio" name="font" id="font_merri" value="merri" />
+              <span class="theme-name">Merriweather</span>
+            </div>
+          </label>
+        </form>
+      </section>
+      <section class="frame-section">
+        <h3>Frame</h3>
+        <form name="frameForm" action="" class="theme-form frame-form">
+          <label for="frame_border" class="theme-option">
+            <div class="image-container">
+              <div class="frame-preview frame-preview-border"></div>
+            </div>
+            <div class="input-container">
+              <input type="radio" name="frame" id="frame_border" />
+              <span class="theme-name">Border</span>
+            </div>
+          </label>
+          <label for="frame_shadow" class="theme-option">
+            <div class="image-container">
+              <div class="frame-preview frame-preview-shadow"></div>
+            </div>
+            <div class="input-container">
+              <input type="radio" name="frame" id="frame_shadow" />
+              <span class="theme-name">Shadow</span>
+            </div>
+          </label>
+          <label for="frame_polaroid" class="theme-option">
+            <div class="image-container">
+              <div class="frame-preview frame-preview-polaroid"></div>
+            </div>
+            <div class="input-container">
+              <input type="radio" name="frame" id="frame_polaroid" />
+              <span class="theme-name">Polaroid</span>
+            </div>
+          </label>
+          <label for="frame_corner" class="theme-option">
+            <div class="image-container">
+              <div class="frame-preview frame-preview-corner"></div>
+            </div>
+            <div class="input-container">
+              <input type="radio" name="frame" id="frame_corner" />
+              <span class="theme-name">Photo Corner</span>
+            </div>
+          </label>
+          <label for="frame_image" class="theme-option">
+            <div class="image-container">
+              <div class="frame-preview frame-preview-image"></div>
+            </div>
+            <div class="input-container">
+              <input type="radio" name="frame" id="frame_image" />
+              <span class="theme-name">Image</span>
+            </div>
+          </label>
+          <label for="frame_none" class="theme-option">
+            <div class="image-container">
+              <div class="frame-preview"></div>
+            </div>
+            <div class="input-container">
+              <input type="radio" name="frame" id="frame_none" />
+              <span class="theme-name">None</span>
+            </div>
+          </label>
+          <label for="png_shadow" class="toggle-label">
+            <div class="switch">
+              <input type="checkbox" name="png_option" id="png_shadow" />
+              <div class="preview-image"></div>
+            </div>
+            <span>Use a shadow instead for PNGs and GIFs</span>
+          </label>
+        </form>
+      </section>
+
+      <!-- <label for="font_family">Font</label>
+      <select name="" id="font_family">
+        <option value="small">Small</option>
+        <option value="default">Default</option>
+        <option value="large">Large</option>
+        <option value="extra large">Extra Large</option>
+      </select> -->
+      <section>
+        <h3>Popup</h3>
+        <form action="">
+          <label for="popup_size">Size</label>
+          <select name="" id="popup_size">
+            <option value="small">Small</option>
+            <option value="default">Default</option>
+            <option value="large">Large</option>
+            <option value="extra large">Extra Large</option>
+          </select>
+        </form>
+      </section>
+      <section class="backup">
+        <h3>Backup</h3>
+        <div class="backup-wrapper theme-form frame-form">
+          <div class="backup-options">
+            <svg
+              width="146"
+              height="211"
+              viewBox="0 0 146 211"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="json-svg"
+            >
+              <path
+                d="M1 1H116V156H1V1Z"
+                fill="#2C2C2C"
+                stroke="white"
+                stroke-width="2"
+                class="svg-bg"
+              />
+              <rect
+                y="128"
+                width="117"
+                height="29"
+                fill="#74B4FF"
+                class="svg-lower-part"
+              />
+              <rect
+                width="46"
+                height="17"
+                fill="#74B4FF"
+                class="svg-upper-part"
+              />
+              <rect width="46" height="17" stroke="none" />
+              <path
+                d="M23.1932 64.8182H26.3636V83.5341C26.3636 85.2045 26.0568 86.6236 25.4432 87.7912C24.8295 88.9588 23.9645 89.8452 22.848 90.4503C21.7315 91.0554 20.4148 91.358 18.8977 91.358C17.4659 91.358 16.1918 91.098 15.0753 90.5781C13.9588 90.0497 13.081 89.2997 12.4418 88.3281C11.8026 87.3565 11.483 86.2017 11.483 84.8636H14.6023C14.6023 85.6051 14.7855 86.2528 15.152 86.8068C15.527 87.3523 16.0384 87.7784 16.6861 88.0852C17.3338 88.392 18.071 88.5455 18.8977 88.5455C19.8097 88.5455 20.5852 88.3537 21.2244 87.9702C21.8636 87.5866 22.3494 87.0241 22.6818 86.2827C23.0227 85.5327 23.1932 84.6165 23.1932 83.5341V64.8182ZM47.0355 71.3636C46.8821 70.0682 46.2599 69.0625 45.169 68.3466C44.0781 67.6307 42.7401 67.2727 41.1548 67.2727C39.9957 67.2727 38.9815 67.4602 38.1122 67.8352C37.2514 68.2102 36.5781 68.7259 36.0923 69.3821C35.6151 70.0384 35.3764 70.7841 35.3764 71.6193C35.3764 72.3182 35.5426 72.919 35.875 73.4219C36.2159 73.9162 36.6506 74.3295 37.179 74.6619C37.7074 74.9858 38.2614 75.2543 38.8409 75.4673C39.4205 75.6719 39.9531 75.8381 40.4389 75.9659L43.098 76.6818C43.7798 76.8608 44.5384 77.108 45.3736 77.4233C46.2173 77.7386 47.0227 78.169 47.7898 78.7145C48.5653 79.2514 49.2045 79.9418 49.7074 80.7855C50.2102 81.6293 50.4616 82.6648 50.4616 83.892C50.4616 85.3068 50.0909 86.5852 49.3494 87.7273C48.6165 88.8693 47.5426 89.777 46.1278 90.4503C44.7216 91.1236 43.0128 91.4602 41.0014 91.4602C39.1264 91.4602 37.5028 91.1577 36.1307 90.5526C34.767 89.9474 33.6932 89.1037 32.9091 88.0213C32.1335 86.9389 31.6946 85.6818 31.5923 84.25H34.8651C34.9503 85.2386 35.2827 86.0568 35.8622 86.7045C36.4503 87.3437 37.1918 87.821 38.0866 88.1364C38.9901 88.4432 39.9616 88.5966 41.0014 88.5966C42.2116 88.5966 43.2983 88.4006 44.2614 88.0085C45.2244 87.608 45.9872 87.054 46.5497 86.3466C47.1122 85.6307 47.3935 84.7955 47.3935 83.8409C47.3935 82.9716 47.1506 82.2642 46.6648 81.7188C46.179 81.1733 45.5398 80.7301 44.7472 80.3892C43.9545 80.0483 43.098 79.75 42.1776 79.4943L38.956 78.5739C36.9105 77.9858 35.2912 77.1463 34.098 76.0554C32.9048 74.9645 32.3082 73.5369 32.3082 71.7727C32.3082 70.3068 32.7045 69.0284 33.4972 67.9375C34.2983 66.8381 35.3722 65.9858 36.7188 65.3807C38.0739 64.767 39.5866 64.4602 41.2571 64.4602C42.9446 64.4602 44.4446 64.7628 45.7571 65.3679C47.0696 65.9645 48.1094 66.7827 48.8764 67.8224C49.652 68.8622 50.0611 70.0426 50.1037 71.3636H47.0355ZM77.7653 77.9091C77.7653 80.6705 77.2667 83.0568 76.2695 85.0682C75.2724 87.0795 73.9045 88.6307 72.1658 89.7216C70.4272 90.8125 68.4414 91.358 66.2085 91.358C63.9755 91.358 61.9897 90.8125 60.2511 89.7216C58.5124 88.6307 57.1445 87.0795 56.1474 85.0682C55.1502 83.0568 54.6516 80.6705 54.6516 77.9091C54.6516 75.1477 55.1502 72.7614 56.1474 70.75C57.1445 68.7386 58.5124 67.1875 60.2511 66.0966C61.9897 65.0057 63.9755 64.4602 66.2085 64.4602C68.4414 64.4602 70.4272 65.0057 72.1658 66.0966C73.9045 67.1875 75.2724 68.7386 76.2695 70.75C77.2667 72.7614 77.7653 75.1477 77.7653 77.9091ZM74.6971 77.9091C74.6971 75.642 74.3178 73.7287 73.5593 72.169C72.8093 70.6094 71.7908 69.429 70.5039 68.6278C69.2255 67.8267 67.7937 67.4261 66.2085 67.4261C64.6232 67.4261 63.1871 67.8267 61.9002 68.6278C60.6218 69.429 59.6033 70.6094 58.8448 72.169C58.0948 73.7287 57.7198 75.642 57.7198 77.9091C57.7198 80.1761 58.0948 82.0895 58.8448 83.6491C59.6033 85.2088 60.6218 86.3892 61.9002 87.1903C63.1871 87.9915 64.6232 88.392 66.2085 88.392C67.7937 88.392 69.2255 87.9915 70.5039 87.1903C71.7908 86.3892 72.8093 85.2088 73.5593 83.6491C74.3178 82.0895 74.6971 80.1761 74.6971 77.9091ZM103.858 64.8182V91H100.789L86.5224 70.4432H86.2667V91H83.0962V64.8182H86.1644L100.483 85.4261H100.738V64.8182H103.858Z"
+                fill="white"
+                class="svg-letters"
+              />
+              <path
+                d="M85.3636 152.455V149.636C87.8939 149.636 89.6591 149.106 90.6591 148.045C91.6742 146.985 92.1818 145.212 92.1818 142.727V135.455C92.1818 133.364 92.3788 131.553 92.7727 130.023C93.1818 128.492 93.8409 127.227 94.75 126.227C95.6591 125.227 96.8712 124.485 98.3864 124C99.9015 123.515 101.773 123.273 104 123.273V127.727C102.242 127.727 100.856 128 99.8409 128.545C98.8409 129.091 98.1288 129.939 97.7045 131.091C97.2955 132.227 97.0909 133.682 97.0909 135.455V144.545C97.0909 145.727 96.9318 146.803 96.6136 147.773C96.3106 148.742 95.7424 149.576 94.9091 150.273C94.0758 150.97 92.8864 151.508 91.3409 151.886C89.8106 152.265 87.8182 152.455 85.3636 152.455ZM104 181.455C101.773 181.455 99.9015 181.212 98.3864 180.727C96.8712 180.242 95.6591 179.5 94.75 178.5C93.8409 177.5 93.1818 176.235 92.7727 174.705C92.3788 173.174 92.1818 171.364 92.1818 169.273V162C92.1818 159.515 91.6742 157.742 90.6591 156.682C89.6591 155.621 87.8939 155.091 85.3636 155.091V152.273C87.8182 152.273 89.8106 152.462 91.3409 152.841C92.8864 153.22 94.0758 153.758 94.9091 154.455C95.7424 155.152 96.3106 155.985 96.6136 156.955C96.9318 157.924 97.0909 159 97.0909 160.182V169.273C97.0909 171.045 97.2955 172.5 97.7045 173.636C98.1288 174.773 98.8409 175.614 99.8409 176.159C100.856 176.72 102.242 177 104 177V181.455ZM85.3636 155.091V149.636H90.7273V155.091H85.3636Z"
+                fill="#2C2C2C"
+                class="svg-upper-bracket"
+              />
+              <path
+                d="M1 36.5V25.7707M0 21.5L1 36.5C1 31.6122 1 29 2.61216 25.7707C4.6838 23.8098 8.14647 22.8293 13 22.8293H27.2056C31.2897 22.8293 34.8263 22.4488 37.8155 21.6878C40.8046 20.8976 43.2757 19.6244 45.229 17.8683C47.1822 16.1122 48.6324 13.7708 49.5794 10.8439C50.5265 7.91708 51 4.30244 51 0H42.2991C42.2991 3.39512 41.7663 6.07318 40.7009 8.03415C39.6355 9.96588 37.9782 11.3414 35.729 12.161C33.5094 12.9512 30.6683 13.3464 27.2056 13.3464H9.44861C7.14023 13.3464 5.0389 13.6537 3.14482 14.2683C3.06219 14.2938 2.98174 14.3185 2.90339 14.3426C1.18579 14.87 0.478188 15.0873 0 17C0.546413 17.9412 0.970261 18.6679 1.29339 19.2322C0.671093 19.103 0 19.669 0 21.5Z"
+                fill="white"
+                class="svg-half-bracket"
+              />
+              <path
+                d="M1 36.5V25.7707M0 21.5L1 36.5C1 31.6122 1 29 2.61216 25.7707C4.6838 23.8098 8.14647 22.8293 13 22.8293H27.2056C31.2897 22.8293 34.8263 22.4488 37.8155 21.6878C40.8046 20.8976 43.2757 19.6244 45.229 17.8683C47.1822 16.1122 48.6324 13.7708 49.5794 10.8439C50.5265 7.91708 51 4.30244 51 0H42.2991C42.2991 3.39512 41.7663 6.07318 40.7009 8.03415C39.6355 9.96588 37.9782 11.3414 35.729 12.161C33.5094 12.9512 30.6683 13.3464 27.2056 13.3464H9.44861C7.14023 13.3464 5.0389 13.6537 3.14482 14.2683C3.06219 14.2938 2.98174 14.3185 2.90339 14.3426C1.18579 14.87 0.478188 15.0873 0 17C0.546413 17.9412 0.970261 18.6679 1.29339 19.2322C0.671093 19.103 0 19.669 0 21.5Z"
+                stroke="white"
+                class="svg-half-bracket-stroke"
+              />
+              <path
+                d="M90.4826 156.67L90.5437 155.012M90.4826 156.67C91.5348 157.77 92.0681 159.614 92.0824 162.203L92.1244 169.782C92.1364 171.961 92.3499 173.846 92.7647 175.439C93.195 177.031 93.8815 178.345 94.8242 179.382C95.7668 180.419 97.0202 181.186 98.5843 181.682C100.149 182.179 102.078 182.421 104.374 182.408L104.348 177.766C102.537 177.776 101.106 177.5 100.057 176.938C99.0234 176.375 98.2847 175.495 97.8409 174.297C97.4127 173.116 97.1935 171.601 97.1833 169.754L97.1309 160.281C97.1241 159.049 96.9539 157.929 96.6205 156.921C96.073 155.265 94.1182 155.885 92.5323 156.388C91.6035 156.682 90.8013 156.937 90.4826 156.67Z"
+                fill="red"
+                class="svg-lower-bracket"
+              />
+              <path
+                d="M90.4826 156.67L90.5437 155.012M90.4826 156.67C91.5348 157.77 92.0681 159.614 92.0824 162.203L92.1244 169.782C92.1364 171.961 92.3499 173.846 92.7647 175.439C93.195 177.031 93.8815 178.345 94.8242 179.382C95.7668 180.419 97.0202 181.186 98.5843 181.682C100.149 182.179 102.078 182.421 104.374 182.408L104.348 177.766C102.537 177.776 101.106 177.5 100.057 176.938C99.0234 176.375 98.2847 175.495 97.8409 174.297C97.4127 173.116 97.1935 171.601 97.1833 169.754L97.1309 160.281C97.1241 159.049 96.9539 157.929 96.6205 156.921C96.073 155.265 94.1182 155.885 92.5323 156.388C91.6035 156.682 90.8013 156.937 90.4826 156.67Z"
+                stroke="white"
+                class="svg-lower-stroke"
+              />
+              <path
+                d="M119.909 179.636L119.545 182.091C119.288 183.818 118.894 185.667 118.364 187.636C117.848 189.606 117.311 191.462 116.75 193.205C116.189 194.947 115.727 196.333 115.364 197.364H111.273C111.47 196.394 111.727 195.114 112.045 193.523C112.364 191.932 112.682 190.152 113 188.182C113.333 186.227 113.606 184.227 113.818 182.182L114.091 179.636H119.909ZM116.636 160.455C115.515 160.455 114.553 160.053 113.75 159.25C112.947 158.447 112.545 157.485 112.545 156.364C112.545 155.242 112.947 154.28 113.75 153.477C114.553 152.674 115.515 152.273 116.636 152.273C117.758 152.273 118.72 152.674 119.523 153.477C120.326 154.28 120.727 155.242 120.727 156.364C120.727 157.106 120.538 157.788 120.159 158.409C119.795 159.03 119.303 159.53 118.682 159.909C118.076 160.273 117.394 160.455 116.636 160.455Z"
+                fill="white"
+                class="svg-semi-colon"
+              />
+              <path
+                d="M145.818 181.273V184.091C143.288 184.091 141.515 184.621 140.5 185.682C139.5 186.742 139 188.515 139 191V198.273C139 200.364 138.795 202.174 138.386 203.705C137.992 205.235 137.341 206.5 136.432 207.5C135.523 208.5 134.311 209.242 132.795 209.727C131.28 210.212 129.409 210.455 127.182 210.455V206C128.939 206 130.318 205.72 131.318 205.159C132.333 204.614 133.045 203.773 133.455 202.636C133.879 201.5 134.091 200.045 134.091 198.273V189.182C134.091 188 134.242 186.924 134.545 185.955C134.864 184.985 135.439 184.152 136.273 183.455C137.106 182.758 138.288 182.22 139.818 181.841C141.364 181.462 143.364 181.273 145.818 181.273ZM127.182 152.273C129.409 152.273 131.28 152.515 132.795 153C134.311 153.485 135.523 154.227 136.432 155.227C137.341 156.227 137.992 157.492 138.386 159.023C138.795 160.553 139 162.364 139 164.455V171.727C139 174.212 139.5 175.985 140.5 177.045C141.515 178.106 143.288 178.636 145.818 178.636V181.455C143.364 181.455 141.364 181.265 139.818 180.886C138.288 180.508 137.106 179.97 136.273 179.273C135.439 178.576 134.864 177.742 134.545 176.773C134.242 175.803 134.091 174.727 134.091 173.545V164.455C134.091 162.682 133.879 161.227 133.455 160.091C133.045 158.939 132.333 158.091 131.318 157.545C130.318 157 128.939 156.727 127.182 156.727V152.273ZM145.818 178.636V184.091H140.455V178.636H145.818Z"
+                fill="white"
+                class="svg-lower-bracket"
+              />
+              <circle
+                cx="113"
+                cy="153"
+                r="4"
+                fill="white"
+                class="svg-circle-colon"
+              />
+              <circle cx="113" cy="153" r="4" stroke="none" />
+            </svg>
+            <button
+              class="export-btn"
+              title="Lets you download your images, including their descriptions, as a JSON file."
+            >
+              Export Images
+            </button>
+            <label for="import" class="import-label">
+              <input
+                type="file"
+                name="import"
+                class="import-input"
+                id="import"
+                accept=".json"
+              />
+              <span class="import-btn">Import Images</span>
+            </label>
+
+            <button
+              class="download-btn"
+              title="Downloads all your images with their descriptions as titles"
+            >
+              Download Images
+            </button>
+
+            <!-- <div class="json-icon">JSON</div> -->
+          </div>
+          <!-- <div class="stats">
+          <div class="floppy-disk-container">
+            <svg
+              class="floppy-disk-svg"
+              width="181"
+              height="188"
+              viewBox="0 0 181 188"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 2.5V183L5 187H16.5L18.5 185.5H162L163.5 187H175.5L179.5 183V11L169.5 1H162.5V2.5H147L143.5 6H139V2.5H27V6H18.5V2.5H1Z"
+                stroke="white"
+                stroke-width="2"
+              />
+            </svg>
+            <div class="info">
+              <p>140 images saved since 2022</p>
+            </div>
+          </div>
+        </div> -->
+          <section class="stats">
+            <div class="floppy-disk">
+              <header class="shutter">
+                <!-- <h6 class="floppy-brand">Frame it</h6> -->
+                <!-- <p class="floppy-description">Formatted for Firefox</p> -->
+                <svg
+                  width="139"
+                  height="152"
+                  viewBox="0 0 139 152"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="34"
+                    y="6"
+                    width="105"
+                    height="6"
+                    rx="3"
+                    fill="#4485A9"
+                  />
+                  <rect
+                    x="22"
+                    width="152"
+                    height="5"
+                    rx="2.5"
+                    transform="rotate(90 22 0)"
+                    fill="#4485A9"
+                  />
+                  <rect
+                    x="128"
+                    y="129"
+                    width="128"
+                    height="8.99999"
+                    rx="4.49999"
+                    transform="rotate(-180 128 129)"
+                    fill="#456093"
+                  />
+                  <rect
+                    x="121"
+                    y="133"
+                    width="124"
+                    height="3.00001"
+                    rx="1.5"
+                    transform="rotate(-90 121 133)"
+                    fill="#456093"
+                  />
+                </svg>
+              </header>
+              <div class="disk-label">
+                <p><b class="total-images">140</b></p>
+              </div>
+            </div>
+            <!-- <p class="image-info">
+              images saved since
+              <time datetime="" class="install-date"
+                >x<sup>th</sup> November 2022</time
+              >
+            </p> -->
+          </section>
+        </div>
+      </section>
+      <p>Μία δοκιμή</p>
+      <p>+ border style option and backup</p>
+      <ul>
+        <li>border style option</li>
+        <li>Backup</li>
+        <li>download all images</li>
+        <li>include frames on pngs checkbox</li>
+        <li>Create a frame around added images (content script)</li>
+        <li>
+          Consider adding a drop shadow for the images that would look like
+          those of paintings (make them less blended with two or more main
+          values)
+        </li>
+        <li>
+          Add a floppy disk in the backup section with the amount of images
+          saved since the extension got installed (could be included in the
+          eventual landing page)
+        </li>
+      </ul>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body class="dark-mode">
+    <main>
+      <div id="app" class="wrapper" v-cloak>
+        <!-- <header>
+          <h1>Frame It!</h1>
+        </header> -->
+        <div class="image-container" :class="borderNone">
+          <!-- <img class="main-image" v-if="isValid" :src="imageURL" alt="" /> -->
+          <!-- <div class="add-image" title="add an image" v-if="!isValid"> -->
+          <!-- Hides the UI ones a valid image has been given -->
+          <!-- <button
+              @click="addImageActive = !addImageActive"
+              class="add-image-btn"
+            ></button> -->
+          <!-- <input type="file" class="image-upload" /> -->
+          <!-- <p class="add-image-para">
+              To add an image, paste it's URL in the text field
+            </p> -->
+          <!-- <input
+              type="text"
+              name=""
+              id=""
+              class="add-image-url"
+              placeholder="Image URL"
+              v-if="addImageActive"
+              v-model="imageURL"
+              ref="imageInput"
+            /> -->
+          <add-image
+            :images="images"
+            :border="borderNone"
+            @newborder="(value) => borderNone = value"
+          />
+          <!-- </div> -->
+          <!-- <add-image /> -->
+        </div>
+        <!-- <p class="warn-para" v-if="warnText">{{warnText}}</p> -->
+        <!-- <image-gallery :cart="cart" :images="images" /> -->
+        <!-- <div class="add-image" v-if="isValid">
+        </div> -->
+        <section class="image-gallery">
+          <add-image :images="images" />
+          <add-image :images="images" />
+        </section>
+      </div>
+    </main>
+    <script defer src="script.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      let app = Vue.createApp({
+        data() {
+          return {
+            // addImageActive: false,
+            // imageURL: undefined,
+            // isValid: undefined,
+            // warnText: undefined,
+            cart: {
+              carrot: "carrot",
+            },
+            images: [
+              {
+                imageURL: undefined,
+                imageDescr: undefined,
+                mainImage: false,
+              },
+            ],
+            borderNone: undefined,
+            // images: [
+            //   {
+            //     imageURL: "test",
+            //     mainImage: false,
+            //   },
+            // ],
+          };
+        },
+        //   };
+        // },
+        // methods: {},
+        // watch: {
+        //   imageURL() {
+        //     //checks whether the url given is valid every time the imageURL property changes
+        //     if (this.imageURL.match(/\.(jpeg|jpg|gif|png|svg)$/) != null) {
+        //       this.isValid = true;
+        //       this.warnText = null;
+        //     } else {
+        //       this.isValid = false;
+        //       this.warnText =
+        //         "This is not a valid image URL. Please make sure you entered the right link.";
+        //     }
+        //   },
+        // },
+      });
+
+      app.component("add-image", {
+        template: `
+        <div class="image-wrapper" v-for="(image, i) in images" :images="images">
+          <div v-on:mouseover="showBtn" v-on:mouseleave="hideBtn" class="btn-container" :class="btnActive" v-if="showImage">
+            <button>Delete</button>
+            <button>Edit</button>
+          </div>
+          <figure v-if="showImage">
+            <img class="main-image"  :src="image.imageURL" :alt="image.imageDescr" />
+            <figcaption>{{image.imageDescr}}</figcaption>
+          </figure>
+          <div class="add-image" :class="imageReady" title="add an image" v-if="!showImage" >
+              <!-- Hides the UI ones a valid image has been given -->
+              <button
+                @click="addImage"
+                class="add-image-btn"
+              ></button>
+              <input
+                type="text"
+                name=""
+                id=""
+                class="add-image-url"
+                placeholder="Image URL"
+                v-if="addImageActive"
+                v-model="newImage.newUrl"
+                ref="input"
+              />
+              <input
+                type="text"
+                name=""
+                id=""
+                class="add-image-url"
+                placeholder="Description"
+                v-if="addImageActive"
+                v-model="newImage.newDescr"
+              />
+              <p class="add-image-para" v-if="addImageActive && !image.imageURL">
+                To add an image, paste it's URL in the text field
+              </p>
+              <p class="warn-para" v-if="warnText">{{warnText}}</p>
+              <p v-if="showImage">{{image.imageDescr}} {{newDescr}}</p>
+            </div>
+          </div>`,
+        props: ["images", "border"],
+        emits: ["newborder"],
+        // emits: ["addImage"],
+        data() {
+          return {
+            addImageActive: false,
+            // imageURL: undefined,
+            isValid: undefined,
+            toShow: undefined,
+            showImage: undefined,
+            imageReady: undefined,
+            btnActive: undefined,
+            warnText: undefined,
+            newImage: {
+              newUrl: undefined,
+              newDescr: undefined,
+            },
+            // images: [
+            //   {
+            //     imageURL: undefined,
+            //     imageDescr: undefined,
+            //     mainImage: false,
+            //   },
+            // ],
+          };
+        },
+        methods: {
+          addImage() {
+            if (!this.addImageActive) {
+              //open the menu in case it is closed
+              this.addImageActive = !this.addImageActive;
+            } else if (this.toShow) {
+              //once it is open, let them add the image if they have filled out the input fields (through the handler function of the watcher)
+              this.images.push({
+                imageURL: this.newImage.newUrl,
+                imageDescr: this.newImage.newDescr,
+                mainImage: false,
+              });
+              this.newUrl = "";
+              this.newDescr = "";
+              this.showImage = !this.showImage;
+              this.$emit("newborder", "has-image"); //lowercase because the v-on event doeesn't seem to be accepting other characters for event names
+              // addImage();
+            }
+          },
+          showBtn() {
+            this.btnActive = "btn-container-active";
+          },
+          hideBtn() {
+            this.btnActive = false;
+          },
+
+          //,
+          // addImage() {
+          //   this.$emit(
+          //     "addImage",
+          //     this.images.push(this.imageURL, this.imageDescr)
+          //   );
+          // },
+        },
+
+        watch: {
+          // checks whether the url given is valid every time the imageURL property changes
+          newImage: {
+            handler() {
+            if (this.newImage.imageURL.match(/\.(jpeg|jpg|gif|png|svg)$/) != null) {
+              this.isValid = true;
+              this.warnText = null;
+            } else {
+              this.isValid = false;
+              this.warnText =
+                "This is not a valid image URL. Please make sure you entered the right link.";
+            }
+            if (
+              newImage.newURL != null &&
+              newImage.neweDescr != null &&
+              this.isValid
+            ) {
+              this.toShow = true;
+              this.imageReady = "add-image-ready";
+            },
+           }
+          },
+        },
+      });
+
+      app.component("image-gallery", {
+        template: `
+          <section class="image-gallery" >
+            <add-image />
+            <add-image />
+          </section>`,
+        // v-if="images.length > 1"
+        // <div class="add-image" v-if="isValid">
+        // <p>{{cart.carrot}}</p>
+        props: ["images", "cart"],
+        components: ["add-image"],
+        // computed: {
+        //   isValid {
+        //     get() {
+        //       return this.isValid
+        //     }
+        //   }
+        // }
+      });
+
+      app.mount("#app");
+    </script>
+  </body>
+</html>

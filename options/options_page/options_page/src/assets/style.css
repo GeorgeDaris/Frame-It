@@ -18,7 +18,6 @@
 }
 
 :root {
-  color-scheme: light;
   --dark-color: #2c2c2c;
   --white: white;
   --active: #2596be;
@@ -30,9 +29,6 @@
 
   --img-descr-text-size: 1.3rem;
   --main-font: "Inter";
-
-  --custom-theme-bg-color: #84a1eb;
-  --custom-theme-accent-color: #2c2c2c;
 }
 
 html {
@@ -48,45 +44,10 @@ html {
   --text-fade: rgba(44, 44, 44, 0);
 }
 
-.light-mode {
-  --dark-color: #2c2c2c;
-  --white: white;
-  --active: #2596be;
-  --ready: #21c27d;
-  --warn: #c2213f;
-  --secondary: #d4d4d4;
-}
-
 .custom-theme {
-  --dark-color: var(--custom-theme-accent-color);
-  --white: var(--custom-theme-bg-color);
+  --dark-color: #2c2c2c;
+  --white: #84a1eb;
   --secondary: #56565680;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --dark-color: white;
-    --white: #2c2c2c;
-    --secondary: #565656;
-
-    --text-fade: rgba(44, 44, 44, 0);
-  }
-}
-
-/*Fonts*/
-.special-elite {
-  --main-font: "Special Elite";
-}
-
-.cbyg {
-  --main-font: "Covered By Your Grace";
-  font-size: 1rem;
-  letter-spacing: 0.132rem;
-  line-height: 0.9;
-}
-
-.merri {
-  --main-font: "Merriweather";
 }
 
 [v-cloak] {
@@ -95,7 +56,7 @@ html {
 
 body {
   margin: 0;
-  /* font-family: "GFS Didot", var(--main-font), sans-serif; */
+  font-family: "GFS Didot", var(--main-font), sans-serif;
   background-color: var(--white);
   color: var(--dark-color);
   overflow-x: hidden;
@@ -108,7 +69,6 @@ main {
   margin: 1rem;
   /* display: grid;
   justify-content: center; */
-  font-family: "GFS Didot", var(--main-font), sans-serif;
 }
 
 select,
@@ -220,7 +180,7 @@ input[type="radio"] {
   width: 1.3rem;
   height: 1.3rem;
   background-color: transparent;
-  border: 0.03rem solid var(--white); /*previously secondary, but it interfered with the custom color optionss*/
+  border: 0.03rem solid var(--secondary);
   border-radius: 100%;
   margin-top: 0rem;
   -webkit-appearance: none;
@@ -284,22 +244,12 @@ input[type="radio"]:focus {
     var(--dark-color),
     var(--dark-color)
   );
-  /* transition: border-image-source 0.7s; the transition doesn't work */
+  transition: border-image-source 0.7s;
 }
 
 /* Custom Theme Option Panel*/
-.custom-theme-wrapperNOT {
-  /* display: none; */
-  visibility: hidden;
-  position: absolute;
-  margin-top: 5rem;
-  opacity: 0;
-  transition: all 0.7s;
-}
-
-.custom-theme-wrapper-activeNOT {
+.custom-theme-wrapper {
   display: grid;
-  visibility: visible;
   /* grid-template-columns: 1fr 1fr;
   width: fit-content; */
   /* border: 2px solid green; */
@@ -311,31 +261,6 @@ input[type="radio"]:focus {
   background-color: var(--white);
   margin-top: 1.2rem; /*to not interfere with the font section*/
   z-index: 2;
-  opacity: 1;
-  transition: all 0.7s;
-}
-
-.custom-theme-wrapper {
-  display: grid;
-  visibility: hidden;
-  grid-template-columns: 2fr 1fr;
-  max-width: 35rem;
-  border: 2px solid var(--secondary);
-  position: absolute;
-  background-color: var(--white);
-  margin-top: 5rem; /*to not interfere with the font section*/
-  z-index: 2;
-  opacity: 0;
-  transition: all 0.7s;
-}
-
-.custom-theme-wrapper-active {
-  /* display: none; */
-  visibility: visible;
-  position: absolute;
-  margin-top: 1.2rem;
-  opacity: 1;
-  transition: all 0.7s;
 }
 
 .color-form {
@@ -368,8 +293,7 @@ input[type="radio"]:focus {
 }
 
 .color-code {
-  display: inline-block;
-  margin-top: 0.1rem;
+  /* display: block; */
 }
 
 .color-info {
@@ -396,18 +320,7 @@ input[type="color"] {
   height: 9rem;
   margin-top: 1rem;
   cursor: pointer;
-  transition: box-shadow 0.3s;
 }
-
-input[type="color"]:hover {
-  box-shadow: 0.2rem -0.2rem var(--white), 0.35rem -0.35rem var(--active);
-  border-radius: 0.2rem;
-  transition: box-shadow 0.3s;
-}
-
-/* input[type="color"]:active {
-  
-} */
 
 /*Taken from this pen: https://codepen.io/leemartin/details/ExPXRzx */
 ::-webkit-color-swatch-wrapper {
@@ -436,7 +349,6 @@ input[type="color"]:hover {
   width: 9rem;
   height: 13rem; /*works for the popup window*/
   margin-top: 1rem;
-  transition: background-color 0.7s;
 }
 
 .frame {
@@ -448,7 +360,6 @@ input[type="color"]:hover {
   color: #2c2c2c;
   border: 0.2rem solid #2c2c2c;
   margin-top: 1rem;
-  transition: border 0.3s;
 }
 
 .frame:after {
@@ -460,21 +371,7 @@ input[type="color"]:hover {
   right: 1.5rem;
 }
 
-.swatches {
-  grid-column: 2;
-  position: absolute;
-  bottom: 1rem;
-}
-
-/* .color-swatch {
-} */
-
 /* Backup Section */
-.backup-wrapper {
-  /* display: flex; */
-  gap: 4rem;
-}
-
 .backup-options {
   /* display: grid;
   grid-template-columns: 10rem 10rem 10rem;
@@ -540,11 +437,6 @@ input {
   clear: left;
 }
 
-.export-btn {
-  margin-top: 0;
-  /* to fix the alignment with the json svg */
-}
-
 /* 
 .download-btn:before {
   content: "";
@@ -608,11 +500,6 @@ input {
   background-color: var(--white);
 }  */
 
-/* .floppy-disk-svg {
-  width: 5rem;
-  height: 7rem;
-} */
-
 .json-svg {
   /* grid-row: 1;
   grid-column: 2; */
@@ -648,183 +535,14 @@ input {
 
 .svg-half-bracket,
 .svg-lower-bracket,
+.svg-lower-stroke,
 .svg-semi-colon {
   fill: var(--dark-color);
-}
-
-.svg-lower-stroke {
-  stroke: var(--dark-color);
 }
 
 .svg-half-bracket-stroke {
   stroke: var(--dark-color);
 }
-
-.floppy-disk {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  width: 7.5rem;
-  height: 8rem;
-  border: 0.1rem solid var(--dark-color);
-  border-radius: 0.2rem;
-  /* float: left;
-  margin-right: 1rem; */
-}
-
-.floppy-disk:after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: -0.34rem;
-  right: -0.47rem;
-  width: 1rem;
-  height: 0.7rem;
-  background-color: var(--white);
-  border-bottom: 0.1rem solid var(--dark-color);
-  transform: rotate(45deg);
-}
-
-.floppy-disk:before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: -0.1rem;
-  left: 0.5rem;
-  width: 0.5rem;
-  height: 0.2rem;
-  background-color: var(--white);
-  border-bottom: 0.1rem solid var(--dark-color);
-  border-left: 0.1rem solid var(--dark-color);
-  border-right: 0.1rem solid var(--dark-color);
-  border-radius: 0.1rem;
-}
-
-.shutter {
-  padding: 0.6rem;
-  width: 3.5rem;
-  padding-bottom: 2rem;
-  /* padding-bottom: 2rem; */
-  background-color: var(--dark-color);
-  color: var(--white);
-  border-radius: 0rem 0rem 0.4rem 0.4rem;
-  position: relative;
-}
-
-.shutter:before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: -0.1rem;
-  right: -0.4rem;
-  width: 0.3rem;
-  height: 0.2rem;
-  background-color: var(--white);
-  border-bottom: 0.1rem solid var(--dark-color);
-  border-left: 0.1rem solid var(--dark-color);
-  border-right: 0.1rem solid var(--dark-color);
-  border-radius: 0.1rem;
-}
-
-.shutter:after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0.3rem;
-  right: 0.5rem;
-  width: 1.1rem;
-  height: 2rem;
-  background-color: var(--white);
-  border-radius: 0.1rem;
-}
-
-.shutter svg {
-  width: 1.5rem;
-  height: 1.5rem;
-  /* margin-left: -0.2rem; */
-  position: absolute;
-  top: 0.6rem;
-  left: 0.4rem;
-
-  /* margin-top: -0.2rem; */
-}
-.shutter svg rect {
-  fill: var(--white);
-}
-
-.floppy-brand {
-  margin: 0;
-  padding-top: 0.1rem;
-  margin-left: 0.8rem;
-  height: 0;
-  font-size: 0.4rem;
-}
-
-/* .floppy-description {
-  margin-top: 0.7rem;
-  margin-left: -0.1rem;
-  margin-bottom: 0;
-  text-transform: uppercase;
-  font-size: 0.3rem;
-} */
-
-/* .floppy-brand:before {
-  content: "Frame";
-} */
-
-.disk-label {
-  background-color: var(--dark-color);
-  position: absolute;
-  bottom: -0.1rem;
-  width: 5.5rem;
-  color: var(--white);
-  font-size: 0.7rem;
-  /* text-align: center; */
-  border-bottom: 0.3rem solid var(--active);
-  border-radius: 0.4rem 0.4rem 0rem 0rem;
-  /* background-image: linear-gradient(var(--secondary) 0.05rem, transparent 0rem);
-  background-size: 100% 1.15rem; */
-}
-
-.disk-label p {
-  /* background-image: linear-gradient(var(--secondary) 0.05rem, transparent 0rem);
-  background-size: 100% 1rem; */
-  line-height: 3.1rem;
-  margin-top: 0.1rem;
-  margin-left: 0.2rem;
-  margin-right: 0.2rem;
-  margin-bottom: 0rem;
-  text-align: center;
-  white-space: normal; /*to overide that of the frame (whose class we are reusing here*/
-}
-
-.total-images {
-  text-shadow: 0.07rem 0.07rem var(--dark-color), 0.17rem 0.17rem var(--active);
-  letter-spacing: 0.1rem;
-  font-size: 1.7rem;
-  position: relative;
-}
-
-.image-info {
-  /* max-width: 17rem; */
-  /* max-height: 7rem; */
-  /* margin-top: 5rem; */
-  white-space: normal;
-  /* writing-mode: vertical-lr; */
-}
-
-/* .total-images:after {
-  content: "images";
-  display: block;
-  position: absolute;
-  top: 2.4rem;
-  font-size: 0.7rem;
-  text-shadow: none;
-  line-height: 0;
-  margin-left: 1.2rem;
-  margin: 0rem auto;
-} */
 
 /* Font Section */
 .font-section {
@@ -878,10 +596,6 @@ input {
 .font-cbyg {
   font-family: "Covered By Your Grace", cursive;
   line-height: 1.15; /*to match with the other cards*/
-}
-
-.font-merri {
-  font-family: "Merriweather", serif;
 }
 
 abbr {
