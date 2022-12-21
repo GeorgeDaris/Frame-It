@@ -41,7 +41,7 @@
         "size": 48
       }
     ],
-    "default_popup": "browserAction/index.html",
+    "default_popup": "browserAction/testFile.html",
     "default_title": "Frame It"
   },
   "page_action": {

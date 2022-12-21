@@ -142,6 +142,42 @@ async function loadStorage() {
       }
     });
   }
+  //Frame
+  let gettingFrame = browser.storage.local.get("currentFrame");
+  let frameExists;
+
+  await gettingFrame.then((value) => {
+    if (value.currentFrame) {
+      frameExists = true;
+    } else {
+      frameExists = false;
+    }
+  });
+
+  if (frameExists === false) {
+    //not sure if anything is needed here
+    frameLabel[0].classList.add("active-theme");
+    frameOption[0].checked = true;
+    let currentFrame = "frame_border";
+    browser.storage.local.set({ currentFrame });
+  } else {
+    let frame = await browser.storage.local.get("currentFrame");
+    frameOption.forEach((option) => {
+      if (option.value === frame.currentFrame) {
+        let frameId = option.getAttribute("id");
+        option.checked = true;
+
+        for (i = 0; i < frameLabel.length; i++) {
+          let labelAttr = frameLabel[i].getAttribute("for");
+          if (labelAttr.includes(frameId)) {
+            //if they match, add the active class
+            frameLabel[i].classList.add("active-theme");
+            console.log(labelAttr);
+          }
+        }
+      }
+    });
+  }
 }
 
 loadStorage();
@@ -299,7 +335,23 @@ fontOption.forEach((option) => {
 
 //changing the frame
 frameOption.forEach((option) => {
-  option.addEventListener("change", () => {});
+  option.addEventListener("change", () => {
+    let currentFrame = option.value;
+    let frameId = option.getAttribute("id");
+    browser.storage.local.set({ currentFrame });
+
+    for (i = 0; i < frameLabel.length; i++) {
+      let labelAttr = frameLabel[i].getAttribute("for");
+      if (labelAttr.includes(frameId)) {
+        //if they match, add the active class
+        frameLabel[i].classList.add("active-theme");
+        console.log(labelAttr);
+      } else if (frameLabel[i].classList.contains("active-theme")) {
+        //otherwise, if it is the previously selected one, remove the class
+        frameLabel[i].classList.remove("active-theme");
+      }
+    }
+  });
 });
 
 // let downloadLink = document.querySelector(".download");

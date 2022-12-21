@@ -235,6 +235,7 @@ figcaption {
 .frame-polaroid {
   border: none;
   outline: 0.5rem solid var(--dark-color);
+  margin-top: 0.5rem;
 }
 
 .frame-polaroid-caption {
