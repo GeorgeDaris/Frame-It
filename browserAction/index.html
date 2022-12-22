@@ -291,12 +291,12 @@
                         <Transition name="fade">
                           <figure v-if="showImage" tabindex="0">
                             <div class="select-image-container">
-                              <img class="main-image frame-polaroid"  :src="image.imageURL" :alt="image.imageDescr" ref="mainImage" />
+                              <img class="main-image"  :src="image.imageURL" :alt="image.imageDescr" ref="mainImage" />
                               <div class="select-image" v-if="image.mainImage === false" :class="btnActive" >
                                 <button class="add-image-btn select-image-btn" title="select as main image" @click="selectImage"></button>
                               </div>
                             </div>
-                            <div class="fade-text frame-polaroid-caption">
+                            <div class="fade-text">
                               <figcaption v-if="!editing" @dblclick="editImage">{{image.imageDescr}}</figcaption>
                               <!--<input v-show="editing" class="edit-img edit-url" type="text" v-model="image.imageURL" ref="editUrl"/>-->
                               <input v-show="editing" @keyup.enter="editImage" class="edit-img" type="text" v-model="image.imageDescr" ref="editDescr"/>

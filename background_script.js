@@ -4,13 +4,23 @@ browser.contextMenus.create({
   contexts: ["image"],
 });
 
-browser.contextMenus.onClicked.addListener(addImage);
+browser.contextMenus.onClicked.addListener(addNewImage);
 
-function addImage(info, tab) {
-  console.log(info);
-  let imageUrl = info.src;
-  const url = "https://duckduckgo.com/?q=" + imageUrl;
-  browser.tabs.create({ url: url });
+// function addImage(info, tab) {
+//   console.log(info);
+//   let imageUrl = info.src;
+//   const url = "https://duckduckgo.com/?q=" + imageUrl;
+//   browser.tabs.create({ url: url });
+// }
+
+function addNewImage(image, tab) {
+  let imageUrl = image.src;
+  browser.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    browser.tabs.sendMessage(tabs[0].id, {
+      imageToSave: `${imageUrl}`,
+      function(response) {},
+    });
+  });
 }
 
 //srcUrl

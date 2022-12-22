@@ -52,6 +52,7 @@
 .custom-theme {
   --dark-color: var(--custom-theme-accent-color);
   --white: var(--custom-theme-bg-color);
+  --secondary: #56565680;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -92,7 +93,7 @@ body {
   width: 20rem;
   min-height: 25rem;
   overflow: hidden;
-  border: 0.2rem solid var(--secondary);
+  /* border: 0.2rem solid var(--secondary); */
 }
 
 main {
@@ -191,6 +192,10 @@ figcaption {
 }
 
 .frame-none {
+  border: none;
+}
+
+.image-gallery .frame-none {
   border: none;
 }
 
