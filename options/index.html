@@ -10,44 +10,44 @@
     <main class="options">
       <section class="theme-section">
         <h3>Theme</h3>
-        <form name="themeForm" action="" class="theme-form">
+        <form name="themeForm" class="theme-form">
           <label for="light_theme" class="theme-option">
-            <div class="image-container">
+            <span class="image-container">
               <img
                 src="assets/light-mode-example.png"
                 alt=""
                 class="theme-example"
               />
-            </div>
-            <div class="input-container">
+            </span>
+            <span class="input-container">
               <input type="radio" name="theme" id="light_theme" value="light" />
               <span class="theme-name">Light</span>
-            </div>
+            </span>
           </label>
 
           <label for="dark_theme" class="theme-option">
-            <div class="image-container">
+            <span class="image-container">
               <img
                 src="assets/dark-mode-example.png"
                 alt=""
                 class="theme-example"
               />
-            </div>
-            <div class="input-container">
+            </span>
+            <span class="input-container">
               <input type="radio" name="theme" id="dark_theme" value="dark" />
               <span class="theme-name">Dark</span>
-            </div>
+            </span>
           </label>
 
           <label for="custom_theme" class="theme-option">
-            <div class="image-container">
+            <span class="image-container">
               <img
                 src="assets/custom-example.png"
                 alt=""
                 class="theme-example"
               />
-            </div>
-            <div class="input-container">
+            </span>
+            <span class="input-container">
               <input
                 type="radio"
                 name="theme"
@@ -55,47 +55,48 @@
                 value="custom"
               />
               <span class="theme-name">Custom</span>
-            </div>
+            </span>
           </label>
         </form>
       </section>
       <!-- <p>After selecting "custom"</p> -->
       <section class="custom-theme-wrapper">
-        <form action="" class="color-form" name="colorForm">
+        <h3 class="sr-only">Custom Colour Theme</h3>
+        <form class="color-form" name="colorForm">
           <label for="custom_theme_background_color" class="color-option">
-            <div class="color-container">
+            <span class="color-container">
               <input
                 type="color"
                 name="custom_theme_background_color"
                 id="custom_theme_background_color"
                 value="#84a1eb"
               />
-              <div class="color-info">
+              <span class="color-info">
                 <span class="color-title">Background color:</span>
                 <br />
                 <span class="color-code">#85a0eb</span>
-              </div>
-            </div>
+              </span>
+            </span>
           </label>
           <label for="custom_theme_accent_color" class="color-option">
-            <div class="color-container">
+            <span class="color-container">
               <input
                 type="color"
                 name="custom_theme_accent_color"
                 id="custom_theme_accent_color"
               />
-              <div class="color-info">
+              <span class="color-info">
                 <span class="color-title">Accent color:</span>
                 <span class="color-code">#000000</span>
-              </div>
-            </div>
+              </span>
+            </span>
           </label>
           <button class="color-btn">Apply Theme</button>
         </form>
         <div class="theme-preview">
           <div class="frame"></div>
         </div>
-        <div class="swatches">
+        <!-- <div class="swatches">
           <form action="">
             <input type="radio" name="" id="" class="color-swatch" value="" />
             <input type="radio" name="" id="" class="color-swatch" value="" />
@@ -108,7 +109,7 @@
               background
             </p>
           </form>
-        </div>
+        </div> -->
       </section>
 
       <!-- <br /><br /><br /> -->
@@ -120,23 +121,23 @@
       </select> -->
       <section class="font-container">
         <h3>Font</h3>
-        <form name="fontForm" action="" class="theme-form font-section">
+        <form name="fontForm" class="theme-form font-section">
           <label for="font_inter" class="theme-option font-option">
-            <div class="font-example font-inter">
-              <h1 class="font-letter">F</h1>
-              <p>Font Preview</p>
-            </div>
-            <div class="input-container">
+            <span class="font-example font-inter">
+              <span class="font-letter">F</span>
+              <span>Font Preview</span>
+            </span>
+            <span class="input-container">
               <input type="radio" name="font" id="font_inter" value="Inter" />
               <span class="theme-name">Inter</span>
-            </div>
+            </span>
           </label>
           <label for="font_special_elite" class="theme-option font-option">
-            <div class="font-example font-special-elite">
-              <h1 class="font-letter">F</h1>
-              <p>Font Preview</p>
-            </div>
-            <div class="input-container">
+            <span class="font-example font-special-elite">
+              <span class="font-letter">F</span>
+              <span>Font Preview</span>
+            </span>
+            <span class="input-container">
               <input
                 type="radio"
                 name="font"
@@ -144,40 +145,40 @@
                 value="special-elite"
               />
               <span class="theme-name">Special Elite</span>
-            </div>
+            </span>
           </label>
           <label for="font_cbyg" class="theme-option font-option">
-            <div class="font-example font-cbyg">
-              <h1 class="font-letter">F</h1>
-              <p>Font Preview</p>
-            </div>
-            <div class="input-container">
+            <span class="font-example font-cbyg">
+              <span class="font-letter">F</span>
+              <span>Font Preview</span>
+            </span>
+            <span class="input-container">
               <input type="radio" name="font" id="font_cbyg" value="cbyg" />
               <span class="theme-name"
                 ><abbr title="Covered By Your Grace">CBYG</abbr></span
               >
-            </div>
+            </span>
           </label>
           <label for="font_merri" class="theme-option font-option">
-            <div class="font-example font-merri">
-              <h1 class="font-letter">F</h1>
-              <p>Font Preview</p>
-            </div>
-            <div class="input-container">
+            <span class="font-example font-merri">
+              <span class="font-letter">F</span>
+              <span>Font Preview</span>
+            </span>
+            <span class="input-container">
               <input type="radio" name="font" id="font_merri" value="merri" />
               <span class="theme-name">Merriweather</span>
-            </div>
+            </span>
           </label>
         </form>
       </section>
       <section class="frame-section">
         <h3>Frame</h3>
-        <form name="frameForm" action="" class="theme-form frame-form">
+        <form name="frameForm" class="theme-form frame-form">
           <label for="frame_border" class="theme-option">
-            <div class="image-container">
-              <div class="frame-preview frame-preview-border"></div>
-            </div>
-            <div class="input-container">
+            <span class="image-container">
+              <span class="frame-preview frame-preview-border"></span>
+            </span>
+            <span class="input-container">
               <input
                 type="radio"
                 name="frame"
@@ -185,13 +186,13 @@
                 value="border"
               />
               <span class="theme-name">Border</span>
-            </div>
+            </span>
           </label>
           <label for="frame_shadow" class="theme-option">
-            <div class="image-container">
-              <div class="frame-preview frame-preview-shadow"></div>
-            </div>
-            <div class="input-container">
+            <span class="image-container">
+              <span class="frame-preview frame-preview-shadow"></span>
+            </span>
+            <span class="input-container">
               <input
                 type="radio"
                 name="frame"
@@ -199,13 +200,13 @@
                 value="shadow"
               />
               <span class="theme-name">Shadow</span>
-            </div>
+            </span>
           </label>
           <label for="frame_polaroid" class="theme-option">
-            <div class="image-container">
-              <div class="frame-preview frame-preview-polaroid"></div>
-            </div>
-            <div class="input-container">
+            <span class="image-container">
+              <span class="frame-preview frame-preview-polaroid"></span>
+            </span>
+            <span class="input-container">
               <input
                 type="radio"
                 name="frame"
@@ -213,13 +214,13 @@
                 value="polaroid"
               />
               <span class="theme-name">Polaroid</span>
-            </div>
+            </span>
           </label>
           <label for="frame_corner" class="theme-option">
-            <div class="image-container">
-              <div class="frame-preview frame-preview-corner"></div>
-            </div>
-            <div class="input-container">
+            <span class="image-container">
+              <span class="frame-preview frame-preview-corner"></span>
+            </span>
+            <span class="input-container">
               <input
                 type="radio"
                 name="frame"
@@ -227,33 +228,33 @@
                 value="photo corner"
               />
               <span class="theme-name">Photo Corner</span>
-            </div>
+            </span>
           </label>
           <label for="frame_image" class="theme-option">
-            <div class="image-container">
-              <div class="frame-preview frame-preview-image"></div>
-            </div>
-            <div class="input-container">
+            <span class="image-container">
+              <span class="frame-preview frame-preview-image"></span>
+            </span>
+            <span class="input-container">
               <input type="radio" name="frame" id="frame_image" value="image" />
               <span class="theme-name">Image</span>
-            </div>
+            </span>
           </label>
           <label for="frame_none" class="theme-option">
-            <div class="image-container">
-              <div class="frame-preview"></div>
-            </div>
-            <div class="input-container">
+            <span class="image-container">
+              <span class="frame-preview"></span>
+            </span>
+            <span class="input-container">
               <input type="radio" name="frame" id="frame_none" value="none" />
               <span class="theme-name">None</span>
-            </div>
+            </span>
           </label>
-          <label for="png_shadow" class="toggle-label">
+          <!-- <label for="png_shadow" class="toggle-label">
             <div class="switch">
               <input type="checkbox" name="png_option" id="png_shadow" />
               <div class="preview-image"></div>
             </div>
             <span>Use a shadow instead for PNGs and GIFs</span>
-          </label>
+          </label> -->
         </form>
       </section>
 
@@ -266,11 +267,11 @@
       </select> -->
       <section>
         <h3>Popup</h3>
-        <form action="">
+        <form>
           <label for="popup_size">Size</label>
-          <select name="" id="popup_size">
+          <select name="popup_size" id="popup_size">
             <option value="small">Small</option>
-            <option value="default">Default</option>
+            <option value="default" selected>Default</option>
             <option value="large">Large</option>
             <option value="extra large">Extra Large</option>
           </select>
@@ -375,12 +376,12 @@
               <span class="import-btn">Import Images</span>
             </label>
 
-            <button
+            <!-- <button
               class="download-btn"
               title="Downloads all your images with their descriptions as titles"
             >
               Download Images
-            </button>
+            </button> -->
 
             <!-- <div class="json-icon">JSON</div> -->
           </div>
@@ -406,6 +407,7 @@
           </div>
         </div> -->
           <section class="stats">
+            <h3 class="sr-only">Saved images</h3>
             <div class="floppy-disk">
               <header class="shutter">
                 <!-- <h6 class="floppy-brand">Frame it</h6> -->
@@ -454,7 +456,7 @@
                 </svg>
               </header>
               <div class="disk-label">
-                <p><b class="total-images">140</b></p>
+                <p><b class="total-images"></b></p>
               </div>
             </div>
             <!-- <p class="image-info">
@@ -466,7 +468,7 @@
           </section>
         </div>
       </section>
-      <p>Μία δοκιμή</p>
+      <!-- <p>Μία δοκιμή</p>
       <p>+ border style option and backup</p>
       <ul>
         <li>border style option</li>
@@ -484,7 +486,7 @@
           saved since the extension got installed (could be included in the
           eventual landing page)
         </li>
-      </ul>
+      </ul> -->
     </main>
     <script src="script.js"></script>
   </body>

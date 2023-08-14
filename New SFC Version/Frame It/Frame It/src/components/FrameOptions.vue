@@ -1,23 +1,88 @@
+<script setup lang="ts"></script>
+<template>
+  <section class="frame-section">
+    <h3>Frame</h3>
+    <form name="frameForm" action="" class="theme-form frame-form">
+      <label for="frame_border" class="theme-option">
+        <div class="container">
+          <div class="frame-preview frame-preview-border"></div>
+        </div>
+        <div class="input-container">
+          <input type="radio" name="frame" id="frame_border" value="border" />
+          <span class="theme-name">Border</span>
+        </div>
+      </label>
+      <label for="frame_shadow" class="theme-option">
+        <div class="container">
+          <div class="frame-preview frame-preview-shadow"></div>
+        </div>
+        <div class="input-container">
+          <input type="radio" name="frame" id="frame_shadow" value="shadow" />
+          <span class="theme-name">Shadow</span>
+        </div>
+      </label>
+      <label for="frame_polaroid" class="theme-option">
+        <div class="container">
+          <div class="frame-preview frame-preview-polaroid"></div>
+        </div>
+        <div class="input-container">
+          <input type="radio" name="frame" id="frame_polaroid" value="polaroid" />
+          <span class="theme-name">Polaroid</span>
+        </div>
+      </label>
+      <label for="frame_corner" class="theme-option">
+        <div class="container">
+          <div class="frame-preview frame-preview-corner"></div>
+        </div>
+        <div class="input-container">
+          <input type="radio" name="frame" id="frame_corner" value="photo corner" />
+          <span class="theme-name">Photo Corner</span>
+        </div>
+      </label>
+      <label for="frame_image" class="theme-option">
+        <div class="container">
+          <div class="frame-preview frame-preview-image"></div>
+        </div>
+        <div class="input-container">
+          <input type="radio" name="frame" id="frame_image" value="image" />
+          <span class="theme-name">Image</span>
+        </div>
+      </label>
+      <label for="frame_none" class="theme-option">
+        <div class="container">
+          <div class="frame-preview"></div>
+        </div>
+        <div class="input-container">
+          <input type="radio" name="frame" id="frame_none" value="none" />
+          <span class="theme-name">None</span>
+        </div>
+      </label>
+    </form>
+  </section>
+</template>
+
+<style scoped>
 /* Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
-@import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
 
-@import url("https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap');
 
-@import url("https://fonts.googleapis.com/css2?family=Crete+Round&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Crete+Round&display=swap');
 
-@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 
 /* @import url("https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap"); */
 
 @font-face {
-  font-family: "GFS Didot";
-  src: url("https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap");
+  font-family: 'GFS Didot';
+  src: url('https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap');
   unicode-range: U+0370, U+03FF; /*For Greek characters*/
 }
 
 :root {
+  font-size: 2px;
   color-scheme: light;
   --dark-color: #2c2c2c;
   --white: white;
@@ -29,7 +94,7 @@
   --text-fade: rgba(255, 255, 255, 0);
 
   --img-descr-text-size: 1.3rem;
-  --main-font: "Inter";
+  --main-font: 'Inter';
 
   --custom-theme-bg-color: #84a1eb;
   --custom-theme-accent-color: #2c2c2c;
@@ -73,58 +138,16 @@ html {
   }
 }
 
-/*Fonts*/
-.special-elite {
-  --main-font: "Special Elite";
-}
-
-.cbyg {
-  --main-font: "Covered By Your Grace";
-  font-size: 1rem;
-  letter-spacing: 0.132rem;
-  line-height: 0.9;
-}
-
-.merri {
-  --main-font: "Merriweather";
-}
-
-[v-cloak] {
-  display: none;
-}
-
-body {
-  margin: 0;
-  /* font-family: "GFS Didot", var(--main-font), sans-serif; */
-  background-color: var(--white);
-  color: var(--dark-color);
-  overflow-x: hidden;
-  transition: background-color 0.3s, color 0.7s;
-  display: grid;
-  justify-content: center;
-}
-
-main {
-  margin: 1rem;
-  /* display: grid;
-  justify-content: center; */
-  font-family: "GFS Didot", var(--main-font), sans-serif;
-}
-
-.sr-only {
+.frame-section {
   position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-h3 {
-  margin-block: 1.2rem;
+  top: 50%;
+  /* right: 50%; */
+  /* min-width: 32rem; */
+  background-color: var(--white);
+  /* transform: scale(0.7); */
+  transform: translateY(-50%) scale(0.7);
+  /* transform-origin: top left; */
+  z-index: 5;
 }
 
 select,
@@ -189,7 +212,7 @@ option {
   display: block;
   width: 20%;
   height: 50%;
-  min-width: 9.5rem;
+  min-width: 9rem;
   /* padding: 1rem; */
   padding-bottom: 0;
   /* border: 0.2rem solid var(--secondary); */
@@ -202,8 +225,7 @@ option {
   cursor: pointer;
 }
 
-.image-container {
-  display: block;
+.container {
   padding: 1rem 0;
 }
 
@@ -231,7 +253,7 @@ option {
   /* To help with the alignment */
 }
 
-input[type="radio"] {
+input[type='radio'] {
   position: relative;
   accent-color: var(--active);
   width: 1.3rem;
@@ -246,8 +268,8 @@ input[type="radio"] {
   transition: all 0.3s;
 }
 
-input[type="radio"]:before {
-  content: "";
+input[type='radio']:before {
+  content: '';
   display: block;
   position: absolute;
   top: 0.3rem;
@@ -272,16 +294,16 @@ input[type="radio"]:before {
   mix-blend-mode: multiply;
 } */
 
-input[type="radio"]:checked {
+input[type='radio']:checked {
   background-color: var(--active);
   border: 0.03rem solid var(--active);
 }
 
-input[type="radio"]:hover {
+input[type='radio']:hover {
   outline: 0.1rem solid var(--active);
 }
 
-input[type="radio"]:focus {
+input[type='radio']:focus {
   outline: 0.1rem solid var(--active);
 }
 
@@ -372,7 +394,6 @@ input[type="radio"]:focus {
 } */
 
 .color-container {
-  display: block;
   background-color: var(--dark-color);
   color: var(--white);
   width: 9rem;
@@ -391,7 +412,6 @@ input[type="radio"]:focus {
 }
 
 .color-info {
-  display: block;
   padding: 0.7rem;
   font-size: 0.8rem;
 }
@@ -402,7 +422,7 @@ input[type="radio"]:focus {
   text-align: center;
 }
 
-input[type="color"] {
+input[type='color'] {
   display: block;
   appearance: none;
   -webkit-appearance: none;
@@ -418,14 +438,14 @@ input[type="color"] {
   transition: box-shadow 0.3s;
 }
 
-input[type="color"]:hover {
+input[type='color']:hover {
   box-shadow: 0.2rem -0.2rem var(--white), 0.35rem -0.35rem var(--active);
   border-radius: 0.2rem;
   transition: box-shadow 0.3s;
 }
 
 /* input[type="color"]:active {
-  
+
 } */
 
 /*Taken from this pen: https://codepen.io/leemartin/details/ExPXRzx */
@@ -471,7 +491,7 @@ input[type="color"]:hover {
 }
 
 .frame:after {
-  content: "Preview";
+  content: 'Preview';
   color: inherit;
   font-size: 1rem;
   position: absolute;
@@ -564,7 +584,7 @@ input {
   /* to fix the alignment with the json svg */
 }
 
-/* 
+/*
 .download-btn:before {
   content: "";
   display: inline-block;
@@ -693,7 +713,7 @@ input {
 }
 
 .floppy-disk:after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   top: -0.34rem;
@@ -706,7 +726,7 @@ input {
 }
 
 .floppy-disk:before {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   top: -0.1rem;
@@ -732,7 +752,7 @@ input {
 }
 
 .shutter:before {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   top: -0.1rem;
@@ -747,7 +767,7 @@ input {
 }
 
 .shutter:after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   top: 0.3rem;
@@ -820,7 +840,7 @@ input {
 
 .total-images {
   text-shadow: 0.07rem 0.07rem var(--dark-color), 0.17rem 0.17rem var(--active);
-  letter-spacing: 0.15rem;
+  letter-spacing: 0.1rem;
   font-size: 1.7rem;
   position: relative;
 }
@@ -873,7 +893,6 @@ input {
 }
 
 .font-example {
-  display: block;
   text-align: center;
 }
 
@@ -882,27 +901,26 @@ input {
   line-height: 0.5;
 }
 
-.font-example span:not(.theme-name, .input-container) {
-  display: block;
+.font-example h1,
+.font-example p {
   text-align: inherit;
-  margin-block: 1.4rem;
 }
 
 .font-inter {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .font-special-elite {
-  font-family: "Special Elite", cursive;
+  font-family: 'Special Elite', cursive;
 }
 
 .font-cbyg {
-  font-family: "Covered By Your Grace", cursive;
+  font-family: 'Covered By Your Grace', cursive;
   line-height: 1.15; /*to match with the other cards*/
 }
 
 .font-merri {
-  font-family: "Merriweather", serif;
+  font-family: 'Merriweather', serif;
 }
 
 abbr {
@@ -938,7 +956,6 @@ abbr {
 }
 
 .frame-preview {
-  display: block;
   width: 5rem;
   height: 5rem;
   background-image: url("assets/Loup's animated waves.png");
@@ -970,7 +987,7 @@ abbr {
 
 .frame-preview-polaroid:after {
   /* Ended up using a pseudo element that won't affect the layout of the page when setting a border on it */
-  content: "";
+  content: '';
   font-size: 0.8rem;
   text-align: center;
   color: var(--white);
@@ -988,7 +1005,7 @@ abbr {
 }
 
 .frame-preview-corner:after {
-  content: "";
+  content: '';
   width: 0;
   height: 0;
   border-style: solid;
@@ -1013,12 +1030,12 @@ abbr {
 
 .frame-preview-image:after {
   /* Once again using a pseudo element to prevent the dimensions of the card to change */
-  content: "";
+  content: '';
   display: block;
   width: 5rem;
   height: 5rem;
   border: 0.1rem solid;
-  border-image-source: url("https://upload.wikimedia.org/wikipedia/commons/0/00/Georges_Pierre_Seurat_-_View_of_Le_Crotoy_from_Upstream_-_70.183_-_Detroit_Institute_of_Arts.jpg");
+  border-image-source: url('https://upload.wikimedia.org/wikipedia/commons/0/00/Georges_Pierre_Seurat_-_View_of_Le_Crotoy_from_Upstream_-_70.183_-_Detroit_Institute_of_Arts.jpg');
   border-image-slice: 277 272 283 286;
   border-image-width: 0.5rem;
   border-image-outset: 0px 0px 0px 0px;
@@ -1052,7 +1069,7 @@ abbr {
   cursor: pointer;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   appearance: none;
   width: 1.5rem;
   height: 1.5rem;
@@ -1063,7 +1080,7 @@ input[type="checkbox"] {
   transition: margin 0.3s, background-color 0.7s;
 }
 
-input[type="checkbox"]:checked {
+input[type='checkbox']:checked {
   background-color: var(--active);
   margin-left: 1.5rem;
   transition: margin 0.3s, background-color 0.7s;
@@ -1076,44 +1093,45 @@ input[type="checkbox"]:checked {
   width: 4rem;
   height: 4.2rem;
   margin-left: 1rem;
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/1971px-Firefox_logo%2C_2019.svg.png");
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/1971px-Firefox_logo%2C_2019.svg.png');
   background-size: cover;
   outline: 0.1rem solid var(--dark-color);
   /* filter: grayscale(50%); */
 }
 
 .toggle-label .preview-image:after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   right: -5rem;
   width: 4rem;
   height: 4.2rem;
   margin-left: 0.5rem;
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/1971px-Firefox_logo%2C_2019.svg.png");
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/1971px-Firefox_logo%2C_2019.svg.png');
   background-size: cover;
   filter: drop-shadow(0.1rem 0.1rem 0 var(--dark-color));
   transition: filter 0.7s;
 }
 
 .toggle-label .preview-image:before {
-  content: "VS";
+  content: 'VS';
   position: absolute;
   bottom: -1.5rem;
   right: -1.3rem;
 }
 
-.toggle-label input[type="checkbox"]:checked + .preview-image:after {
+.toggle-label input[type='checkbox']:checked + .preview-image:after {
   filter: drop-shadow(0.15rem 0.15rem 0 var(--active));
   transition: filter 0.7s;
 }
 
-.toggle-label input[type="checkbox"] + .preview-image {
+.toggle-label input[type='checkbox'] + .preview-image {
   outline: 0.15rem solid var(--active);
   transition: outline 0.3s;
 }
 
-.toggle-label input[type="checkbox"]:checked + .preview-image {
+.toggle-label input[type='checkbox']:checked + .preview-image {
   outline: 0.1rem solid var(--dark-color);
   transition: outline 0.3s;
 }
+</style>

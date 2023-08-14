@@ -41,17 +41,7 @@
         "size": 48
       }
     ],
-    "default_popup": "browserAction/testFile.html",
-    "default_title": "Frame It"
-  },
-  "page_action": {
-    "default_icon": {
-      "64": "icons/icon.svg",
-      "48": "icons/icon.svg",
-      "32": "icons/icon.svg",
-      "16": "icons/icon.svg"
-    },
-    "default_popup": "pageAction/index.html",
+    "default_popup": "browserAction/firstExtVer.html",
     "default_title": "Frame It"
   },
   "options_ui": {

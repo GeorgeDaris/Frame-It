@@ -354,24 +354,87 @@ frameOption.forEach((option) => {
   });
 });
 
+let totalImagesSpan = document.querySelector(".total-images");
+
+const getTotalImages = async () => {
+  const images = await browser.storage.local.get("images");
+  totalImagesSpan.innerText = images.images
+    ? images.images.length.toString().padStart(2, "0")
+    : 0;
+};
+
+getTotalImages();
+
 // let downloadLink = document.querySelector(".download");
 let exportBtn = document.querySelector(".export-btn");
 
 async function downloadJSON() {
-  let data = await browser.storage.local.get("test");
-  let dataStr = JSON.stringify(data.test, null, 4); //the third parameter is for adding indentations
-  console.log(dataStr);
-  let dataUri = "data: text/json;charset=utf-8," + encodeURIComponent(dataStr);
-  let exportFileDefaultName = "test.json";
+  let data = await browser.storage.local.get("images");
+  if (data.images) {
+    let dataStr = JSON.stringify(data.images, null, 4); //the third parameter is for adding indentations
+    console.log(dataStr);
+    let dataUri =
+      "data: text/json;charset=utf-8," + encodeURIComponent(dataStr);
+    let exportFileDefaultName = "Frame_It__Images.json";
 
-  let downloadLink = document.createElement("a");
-  downloadLink.setAttribute("href", dataUri);
-  downloadLink.setAttribute("download", exportFileDefaultName);
-  downloadLink.click();
+    let downloadLink = document.createElement("a");
+    downloadLink.setAttribute("href", dataUri);
+    downloadLink.setAttribute("download", exportFileDefaultName);
+    downloadLink.click();
+  }
 }
 // downloadJSON();
 
 exportBtn.addEventListener("click", downloadJSON);
+
+let importBtn = document.querySelector(".import-input");
+let importLabel = document.querySelector(".import-label");
+
+async function loadJSON() {
+  const file = importBtn.files[0]; //getting the file
+
+  // Adding a further check for good measure
+  if (file.type == "application/json") {
+    console.log("IT is a json file");
+    console.log(file);
+    // const test = document.createElement("p");
+    // test.innerHTML = file;
+    // body.appendChild(test);
+
+    const reader = new FileReader();
+
+    reader.onload = (event) => {
+      const jsonData = JSON.parse(event.target.result);
+      console.log(jsonData);
+      browser.storage.local.set({ images: jsonData });
+      //Updating the image count
+      getTotalImages();
+    };
+
+    //This works, although I will need to find a way to validate the JSON file, as well as make sure that it has the appropriate fields
+    reader.readAsText(file);
+  }
+}
+
+importBtn.addEventListener("change", loadJSON);
+
+let popupSizeSelect = document.querySelector("#popup_size");
+
+const getPopupSize = async () => {
+  let data = await browser.storage.local.get("popupSize");
+  popupSizeSelect.value = data.popupSize ? data.popupSize : "default";
+};
+
+getPopupSize();
+
+function changePopupSize() {
+  // arrow functions don't seem to work for some reason
+  let popupSize = popupSizeSelect.value;
+  console.log(popupSize);
+  browser.storage.local.set({ popupSize });
+}
+
+popupSizeSelect.addEventListener("change", changePopupSize);
 
 if (!"theme" in window) {
   if (
