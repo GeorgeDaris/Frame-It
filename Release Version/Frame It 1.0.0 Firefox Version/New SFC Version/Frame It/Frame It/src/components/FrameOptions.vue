@@ -1,0 +1,1137 @@
+<script setup lang="ts"></script>
+<template>
+  <section class="frame-section">
+    <h3>Frame</h3>
+    <form name="frameForm" action="" class="theme-form frame-form">
+      <label for="frame_border" class="theme-option">
+        <div class="container">
+          <div class="frame-preview frame-preview-border"></div>
+        </div>
+        <div class="input-container">
+          <input type="radio" name="frame" id="frame_border" value="border" />
+          <span class="theme-name">Border</span>
+        </div>
+      </label>
+      <label for="frame_shadow" class="theme-option">
+        <div class="container">
+          <div class="frame-preview frame-preview-shadow"></div>
+        </div>
+        <div class="input-container">
+          <input type="radio" name="frame" id="frame_shadow" value="shadow" />
+          <span class="theme-name">Shadow</span>
+        </div>
+      </label>
+      <label for="frame_polaroid" class="theme-option">
+        <div class="container">
+          <div class="frame-preview frame-preview-polaroid"></div>
+        </div>
+        <div class="input-container">
+          <input type="radio" name="frame" id="frame_polaroid" value="polaroid" />
+          <span class="theme-name">Polaroid</span>
+        </div>
+      </label>
+      <label for="frame_corner" class="theme-option">
+        <div class="container">
+          <div class="frame-preview frame-preview-corner"></div>
+        </div>
+        <div class="input-container">
+          <input type="radio" name="frame" id="frame_corner" value="photo corner" />
+          <span class="theme-name">Photo Corner</span>
+        </div>
+      </label>
+      <label for="frame_image" class="theme-option">
+        <div class="container">
+          <div class="frame-preview frame-preview-image"></div>
+        </div>
+        <div class="input-container">
+          <input type="radio" name="frame" id="frame_image" value="image" />
+          <span class="theme-name">Image</span>
+        </div>
+      </label>
+      <label for="frame_none" class="theme-option">
+        <div class="container">
+          <div class="frame-preview"></div>
+        </div>
+        <div class="input-container">
+          <input type="radio" name="frame" id="frame_none" value="none" />
+          <span class="theme-name">None</span>
+        </div>
+      </label>
+    </form>
+  </section>
+</template>
+
+<style scoped>
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Crete+Round&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+/* @import url("https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap"); */
+
+@font-face {
+  font-family: 'GFS Didot';
+  src: url('https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap');
+  unicode-range: U+0370, U+03FF; /*For Greek characters*/
+}
+
+:root {
+  font-size: 2px;
+  color-scheme: light;
+  --dark-color: #2c2c2c;
+  --white: white;
+  --active: #2596be;
+  --ready: #21c27d;
+  --warn: #c2213f;
+  --secondary: #d4d4d4;
+
+  --text-fade: rgba(255, 255, 255, 0);
+
+  --img-descr-text-size: 1.3rem;
+  --main-font: 'Inter';
+
+  --custom-theme-bg-color: #84a1eb;
+  --custom-theme-accent-color: #2c2c2c;
+}
+
+html {
+  font-size: 14px;
+  /* for the options page */
+}
+
+.dark-mode {
+  --dark-color: white;
+  --white: #2c2c2c;
+  --secondary: #565656;
+
+  --text-fade: rgba(44, 44, 44, 0);
+}
+
+.light-mode {
+  --dark-color: #2c2c2c;
+  --white: white;
+  --active: #2596be;
+  --ready: #21c27d;
+  --warn: #c2213f;
+  --secondary: #d4d4d4;
+}
+
+.custom-theme {
+  --dark-color: var(--custom-theme-accent-color);
+  --white: var(--custom-theme-bg-color);
+  --secondary: #56565680;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dark-color: white;
+    --white: #2c2c2c;
+    --secondary: #565656;
+
+    --text-fade: rgba(44, 44, 44, 0);
+  }
+}
+
+.frame-section {
+  position: absolute;
+  top: 50%;
+  /* right: 50%; */
+  /* min-width: 32rem; */
+  background-color: var(--white);
+  /* transform: scale(0.7); */
+  transform: translateY(-50%) scale(0.7);
+  /* transform-origin: top left; */
+  z-index: 5;
+}
+
+select,
+button,
+.import-btn {
+  display: block;
+  background-color: var(--white);
+  color: var(--dark-color);
+  padding: 0.4rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  border: 0.1rem solid var(--dark-color);
+  font-family: var(--main-font), sans-serif;
+  font-size: 0.833rem;
+  /* border-radius: 0.1rem; */
+  transition: box-shadow 0.3s;
+  cursor: pointer;
+}
+
+select:active,
+button:active {
+  border: 0.1rem solid var(--active);
+}
+
+select:hover,
+button:hover,
+.import-btn:hover {
+  background-color: var(--secondary);
+  box-shadow: 0.2rem 0.2rem var(--white), 0.35rem 0.35rem var(--active);
+  transition: box-shadow 0.3s;
+}
+
+/* *:focus {
+  outline: 0.2rem solid var(--active);
+} applies the focus styeles even when clicked with a mouse for some reason*/
+
+option {
+  background-color: var(--white);
+  color: var(-dark-color);
+}
+
+/* Theme Section */
+.theme-section .theme-form {
+  flex-wrap: wrap;
+  /* Added after the fact to make it responsive */
+  max-width: 35rem;
+  /* Added after the fact for it to be consistent with the others */
+  justify-content: center;
+  /*Added after the fact*/
+}
+
+.theme-example {
+  width: 4rem;
+}
+
+.theme-form {
+  display: flex;
+  gap: 2rem;
+}
+
+.theme-option {
+  display: block;
+  width: 20%;
+  height: 50%;
+  min-width: 9rem;
+  /* padding: 1rem; */
+  padding-bottom: 0;
+  /* border: 0.2rem solid var(--secondary); */
+  border: 0.2rem solid var(--dark-color); /*combined with the input container it makes it look like a Polaroid photo*/
+  background-color: var(--white);
+}
+
+.theme-option:hover {
+  background-color: var(--secondary);
+  cursor: pointer;
+}
+
+.container {
+  padding: 1rem 0;
+}
+
+.theme-example {
+  display: block;
+  margin: 0 auto;
+  border: 0.01rem solid var(--dark-color);
+  /* border-radius: 0.2rem; */
+}
+
+.input-container {
+  padding: 0.5rem;
+  margin-bottom: 0;
+  background-color: var(--dark-color);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  /* border: 1px solid blue; */
+  outline: 0.1rem solid var(--dark-color);
+}
+
+.input-container input {
+  margin-left: -0.01rem;
+  /* To help with the alignment */
+}
+
+input[type='radio'] {
+  position: relative;
+  accent-color: var(--active);
+  width: 1.3rem;
+  height: 1.3rem;
+  background-color: transparent;
+  border: 0.03rem solid var(--white); /*previously secondary, but it interfered with the custom color optionss*/
+  border-radius: 100%;
+  margin-top: 0rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+input[type='radio']:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0.3rem;
+  right: 0.3rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 100%;
+  background-color: var(--dark-color);
+}
+
+/* input[type="radio"]:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 0.01rem solid var(--white);
+  border-radius: 100%;
+  background-color: var(--dark-color);
+  mix-blend-mode: multiply;
+} */
+
+input[type='radio']:checked {
+  background-color: var(--active);
+  border: 0.03rem solid var(--active);
+}
+
+input[type='radio']:hover {
+  outline: 0.1rem solid var(--active);
+}
+
+input[type='radio']:focus {
+  outline: 0.1rem solid var(--active);
+}
+
+.theme-name {
+  display: inline-block;
+}
+
+.active-theme {
+  /*class to be toggled*/
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 0.2rem;
+  border-image-source: linear-gradient(
+    to right bottom,
+    var(--active),
+    var(--dark-color),
+    var(--dark-color),
+    var(--dark-color)
+  );
+  /* transition: border-image-source 0.7s; the transition doesn't work */
+}
+
+/* Custom Theme Option Panel*/
+.custom-theme-wrapperNOT {
+  /* display: none; */
+  visibility: hidden;
+  position: absolute;
+  margin-top: 5rem;
+  opacity: 0;
+  transition: all 0.7s;
+}
+
+.custom-theme-wrapper-activeNOT {
+  display: grid;
+  visibility: visible;
+  /* grid-template-columns: 1fr 1fr;
+  width: fit-content; */
+  /* border: 2px solid green; */
+  /* align-items: center; */
+  grid-template-columns: 2fr 1fr;
+  max-width: 35rem;
+  border: 2px solid var(--secondary);
+  position: absolute;
+  background-color: var(--white);
+  margin-top: 1.2rem; /*to not interfere with the font section*/
+  z-index: 2;
+  opacity: 1;
+  transition: all 0.7s;
+}
+
+.custom-theme-wrapper {
+  display: grid;
+  visibility: hidden;
+  grid-template-columns: 2fr 1fr;
+  max-width: 35rem;
+  border: 2px solid var(--secondary);
+  position: absolute;
+  background-color: var(--white);
+  margin-top: 5rem; /*to not interfere with the font section*/
+  z-index: 2;
+  opacity: 0;
+  transition: all 0.7s;
+}
+
+.custom-theme-wrapper-active {
+  /* display: none; */
+  visibility: visible;
+  position: absolute;
+  margin-top: 1.2rem;
+  opacity: 1;
+  transition: all 0.7s;
+}
+
+.color-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  /* border: 2px solid red; */
+  /* width: 50%; */
+  width: fit-content;
+  /* height: 20rem; */
+}
+
+/* .color-option {
+  flex-basis: 40%;
+} */
+
+.color-container {
+  background-color: var(--dark-color);
+  color: var(--white);
+  width: 9rem;
+  height: 13rem;
+  padding-bottom: 1.3rem;
+}
+
+.color-title {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.color-code {
+  display: inline-block;
+  margin-top: 0.1rem;
+}
+
+.color-info {
+  padding: 0.7rem;
+  font-size: 0.8rem;
+}
+
+.color-btn {
+  flex: 50%;
+  max-width: 19rem;
+  text-align: center;
+}
+
+input[type='color'] {
+  display: block;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  background: none;
+  width: 9rem;
+  height: 9rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+}
+
+input[type='color']:hover {
+  box-shadow: 0.2rem -0.2rem var(--white), 0.35rem -0.35rem var(--active);
+  border-radius: 0.2rem;
+  transition: box-shadow 0.3s;
+}
+
+/* input[type="color"]:active {
+
+} */
+
+/*Taken from this pen: https://codepen.io/leemartin/details/ExPXRzx */
+::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+::-webkit-color-swatch {
+  border: 0;
+  border-radius: 0;
+}
+
+::-moz-color-swatch,
+::-moz-focus-inner {
+  border: 0;
+}
+
+::-moz-focus-inner {
+  padding: 0;
+}
+
+.theme-preview {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  background-color: #84a1eb;
+  width: 9rem;
+  height: 13rem; /*works for the popup window*/
+  margin-top: 1rem;
+  transition: background-color 0.7s;
+}
+
+.frame {
+  position: relative;
+  width: 7rem;
+  height: 7rem;
+  background-image: url("assets/Loup's animated waves.png");
+  background-size: cover;
+  color: #2c2c2c;
+  border: 0.2rem solid #2c2c2c;
+  margin-top: 1rem;
+  transition: border 0.3s;
+}
+
+.frame:after {
+  content: 'Preview';
+  color: inherit;
+  font-size: 1rem;
+  position: absolute;
+  bottom: -2rem;
+  right: 1.5rem;
+}
+
+.swatches {
+  grid-column: 2;
+  position: absolute;
+  bottom: 1rem;
+}
+
+/* .color-swatch {
+} */
+
+/* Backup Section */
+.backup-wrapper {
+  /* display: flex; */
+  gap: 4rem;
+}
+
+.backup-options {
+  /* display: grid;
+  grid-template-columns: 10rem 10rem 10rem;
+  grid-template-rows: 2fr 1fr;
+  column-gap: 2rem;
+  justify-items: center;
+  align-items: center;
+  max-width: 50rem; */
+  /* display: flex; */
+  /* width: 25rem; */
+}
+
+/* .backup-options button,
+label,
+input {
+  grid-row: 2;
+} */
+
+.import-label {
+  position: relative;
+  /* max-width: 7rem;
+  height: 2.3em; */
+  /* max-height: 0.5rem; */
+  /* border: 2px solid blue; */
+}
+
+.import-input {
+  opacity: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 1rem; /*  */
+  /* max-height: 0.5rem; */
+  width: 7rem;
+}
+
+.import-input:focus {
+  opacity: 1;
+  /* display: inline-block; */
+  width: 6.6rem;
+  height: 0.1rem;
+  margin: 0;
+}
+
+.import-btn {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* pointer-events: none; */
+  margin: 0;
+  /* font-size: 0.833rem; */
+  /* font-size: 1.1rem; works for the extension */
+  white-space: nowrap;
+  /* width: 8rem; */
+  /*will have to change it for the actual options page because it makes it smaller than the rest of the buttons*/
+}
+
+.download-btn {
+  /* position: relative;
+  padding-left: 1.7rem; */
+  /* float: right; */
+  clear: left;
+}
+
+.export-btn {
+  margin-top: 0;
+  /* to fix the alignment with the json svg */
+}
+
+/*
+.download-btn:before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.5rem;
+  height: 100%;
+  background-color: var(--dark-color);
+} */
+
+/* .download-btn:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-image: url("assets/test.svg");
+  background-position: center;
+  background-size: cover;
+  background-color: var(--white);
+}
+
+.json-icon {
+  position: relative;
+  background-color: var(--dark-color);
+  color: var(--white);
+  font-size: 0.7rem;
+  text-align: center;
+  width: 2rem;
+  height: 2rem;
+  border-bottom: 0.5rem solid var(--active);
+}
+
+.json-icon:before {
+  content: "{;}";
+  display: inline-block;
+  position: absolute;
+  right: -0.5rem;
+  bottom: -0.4rem;
+  width: 1rem;
+  height: 1rem;
+  font-size: 1rem;
+  color: var(--dark-color);
+  /* background-color: var(--white); */
+/* }
+
+.json-icon:after {
+  content: "{";
+  display: inline-block;
+  position: absolute;
+  right: -0.2rem;
+  bottom: -0.4rem;
+  width: 1rem;
+  height: 1rem;
+  font-size: 1rem;
+  color: var(--white);
+  background-color: var(--white);
+}  */
+
+/* .floppy-disk-svg {
+  width: 5rem;
+  height: 7rem;
+} */
+
+.json-svg {
+  /* grid-row: 1;
+  grid-column: 2; */
+  /* position: relative; */
+  float: left;
+  width: 5rem;
+  height: 7rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.svg-bg {
+  fill: var(--white);
+  stroke: var(--dark-color);
+}
+
+.svg-upper-bracket,
+.svg-circle-colon {
+  fill: var(--white);
+}
+
+.svg-lower-part {
+  fill: var(--active);
+}
+
+.svg-upper-part {
+  fill: var(--active);
+}
+
+.svg-letters {
+  fill: var(--dark-color);
+}
+
+.svg-half-bracket,
+.svg-lower-bracket,
+.svg-semi-colon {
+  fill: var(--dark-color);
+}
+
+.svg-lower-stroke {
+  stroke: var(--dark-color);
+}
+
+.svg-half-bracket-stroke {
+  stroke: var(--dark-color);
+}
+
+.floppy-disk {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 7.5rem;
+  height: 8rem;
+  border: 0.1rem solid var(--dark-color);
+  border-radius: 0.2rem;
+  /* float: left;
+  margin-right: 1rem; */
+}
+
+.floppy-disk:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -0.34rem;
+  right: -0.47rem;
+  width: 1rem;
+  height: 0.7rem;
+  background-color: var(--white);
+  border-bottom: 0.1rem solid var(--dark-color);
+  transform: rotate(45deg);
+}
+
+.floppy-disk:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -0.1rem;
+  left: 0.5rem;
+  width: 0.5rem;
+  height: 0.2rem;
+  background-color: var(--white);
+  border-bottom: 0.1rem solid var(--dark-color);
+  border-left: 0.1rem solid var(--dark-color);
+  border-right: 0.1rem solid var(--dark-color);
+  border-radius: 0.1rem;
+}
+
+.shutter {
+  padding: 0.6rem;
+  width: 3.5rem;
+  padding-bottom: 2rem;
+  /* padding-bottom: 2rem; */
+  background-color: var(--dark-color);
+  color: var(--white);
+  border-radius: 0rem 0rem 0.4rem 0.4rem;
+  position: relative;
+}
+
+.shutter:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -0.1rem;
+  right: -0.4rem;
+  width: 0.3rem;
+  height: 0.2rem;
+  background-color: var(--white);
+  border-bottom: 0.1rem solid var(--dark-color);
+  border-left: 0.1rem solid var(--dark-color);
+  border-right: 0.1rem solid var(--dark-color);
+  border-radius: 0.1rem;
+}
+
+.shutter:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0.3rem;
+  right: 0.5rem;
+  width: 1.1rem;
+  height: 2rem;
+  background-color: var(--white);
+  border-radius: 0.1rem;
+}
+
+.shutter svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  /* margin-left: -0.2rem; */
+  position: absolute;
+  top: 0.6rem;
+  left: 0.4rem;
+
+  /* margin-top: -0.2rem; */
+}
+.shutter svg rect {
+  fill: var(--white);
+}
+
+.floppy-brand {
+  margin: 0;
+  padding-top: 0.1rem;
+  margin-left: 0.8rem;
+  height: 0;
+  font-size: 0.4rem;
+}
+
+/* .floppy-description {
+  margin-top: 0.7rem;
+  margin-left: -0.1rem;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  font-size: 0.3rem;
+} */
+
+/* .floppy-brand:before {
+  content: "Frame";
+} */
+
+.disk-label {
+  background-color: var(--dark-color);
+  position: absolute;
+  bottom: -0.1rem;
+  width: 5.5rem;
+  color: var(--white);
+  font-size: 0.7rem;
+  /* text-align: center; */
+  border-bottom: 0.3rem solid var(--active);
+  border-radius: 0.4rem 0.4rem 0rem 0rem;
+  /* background-image: linear-gradient(var(--secondary) 0.05rem, transparent 0rem);
+  background-size: 100% 1.15rem; */
+}
+
+.disk-label p {
+  /* background-image: linear-gradient(var(--secondary) 0.05rem, transparent 0rem);
+  background-size: 100% 1rem; */
+  line-height: 3.1rem;
+  margin-top: 0.1rem;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+  margin-bottom: 0rem;
+  text-align: center;
+  white-space: normal; /*to overide that of the frame (whose class we are reusing here*/
+}
+
+.total-images {
+  text-shadow: 0.07rem 0.07rem var(--dark-color), 0.17rem 0.17rem var(--active);
+  letter-spacing: 0.1rem;
+  font-size: 1.7rem;
+  position: relative;
+}
+
+.image-info {
+  /* max-width: 17rem; */
+  /* max-height: 7rem; */
+  /* margin-top: 5rem; */
+  white-space: normal;
+  /* writing-mode: vertical-lr; */
+}
+
+/* .total-images:after {
+  content: "images";
+  display: block;
+  position: absolute;
+  top: 2.4rem;
+  font-size: 0.7rem;
+  text-shadow: none;
+  line-height: 0;
+  margin-left: 1.2rem;
+  margin: 0rem auto;
+} */
+
+/* Font Section */
+.font-section {
+  overflow-x: scroll;
+  /* width: 45rem; */
+  white-space: nowrap;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable both-edges;
+  scrollbar-color: var(--secondary) var(--white);
+  /* margin-left: -0.5rem; to offset the margin added by the scrollbar */
+  margin-left: 0.3rem;
+}
+
+.font-container {
+  overflow: hidden;
+  max-width: 35rem;
+}
+
+.font-section .theme-option {
+  /* width: 6rem; */
+  min-width: 9.5rem; /*10rem works better for the actual options page*/
+  margin-bottom: 0.7rem; /*for the scrollbar*/
+}
+
+.font-section .input-container {
+  /* min-width: 8rem; */
+}
+
+.font-example {
+  text-align: center;
+}
+
+.font-letter {
+  font-size: 2rem;
+  line-height: 0.5;
+}
+
+.font-example h1,
+.font-example p {
+  text-align: inherit;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-special-elite {
+  font-family: 'Special Elite', cursive;
+}
+
+.font-cbyg {
+  font-family: 'Covered By Your Grace', cursive;
+  line-height: 1.15; /*to match with the other cards*/
+}
+
+.font-merri {
+  font-family: 'Merriweather', serif;
+}
+
+abbr {
+  /* text-decoration: underline; */
+  /* text-decoration-color: var(--secondary); */
+}
+
+/* Chromium Scrollbar */
+
+.font-section::-webkit-scrollbar {
+  background-color: var(--white);
+  height: 0.5rem;
+}
+
+.font-section::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+}
+
+.font-section::-webkit-scrollbar-thumb:active {
+  background-color: var(--dark-color);
+}
+
+/* Frame Section */
+.frame-form {
+  flex-wrap: wrap;
+  justify-content: center; /*Might have to change it*/
+  max-width: 35rem;
+  white-space: nowrap;
+}
+
+.frame-form .theme-option {
+  width: 8rem;
+}
+
+.frame-preview {
+  width: 5rem;
+  height: 5rem;
+  background-image: url("assets/Loup's animated waves.png");
+  background-size: cover;
+  margin: 0 auto;
+  /* border: 1rem solid;
+  border-image-source: url("https://upload.wikimedia.org/wikipedia/commons/0/00/Georges_Pierre_Seurat_-_View_of_Le_Crotoy_from_Upstream_-_70.183_-_Detroit_Institute_of_Arts.jpg");
+  border-image-slice: 277 272 283 286;
+  border-image-width: 20px;
+  border-image-outset: 0px 0px 0px 0px;
+  border-image-repeat: stretch stretch; */
+}
+
+.frame-preview-border {
+  outline: 0.1rem solid var(--dark-color);
+  /* Using an outline to prevent the label from getting taller*/
+}
+
+.frame-preview-shadow {
+  filter: drop-shadow(0.3rem 0.3rem 0 var(--dark-color));
+}
+
+.frame-preview-polaroid {
+  position: relative;
+  margin-bottom: 0.5rem;
+  margin-top: -0.5rem;
+  /* for some reason the above aren't needed for the actual options page */
+}
+
+.frame-preview-polaroid:after {
+  /* Ended up using a pseudo element that won't affect the layout of the page when setting a border on it */
+  content: '';
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--white);
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  outline: 0.15rem solid var(--dark-color);
+  border-bottom: 1rem solid var(--dark-color);
+  /* margin-bottom: -0.5rem; */
+  /* margin-top: -0.5rem; */
+}
+
+.frame-preview-corner {
+  position: relative;
+}
+
+.frame-preview-corner:after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 1.5rem 1.5rem;
+  border-color: transparent transparent var(--dark-color) transparent;
+  position: absolute;
+  bottom: -0.1rem;
+  right: -0.1rem;
+}
+
+/* .frame-preview-corner:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 1.5rem 1.5rem 0 0;
+  border-color: var(--dark-color) transparent transparent transparent;
+  position: absolute;
+  top: -0.1rem;
+  left: -0.1rem;
+} */
+
+.frame-preview-image:after {
+  /* Once again using a pseudo element to prevent the dimensions of the card to change */
+  content: '';
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  border: 0.1rem solid;
+  border-image-source: url('https://upload.wikimedia.org/wikipedia/commons/0/00/Georges_Pierre_Seurat_-_View_of_Le_Crotoy_from_Upstream_-_70.183_-_Detroit_Institute_of_Arts.jpg');
+  border-image-slice: 277 272 283 286;
+  border-image-width: 0.5rem;
+  border-image-outset: 0px 0px 0px 0px;
+  border-image-repeat: stretch stretch;
+}
+
+.toggle-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* margin-bottom: 3rem; */
+  margin-top: 6rem;
+  /* width: 100%; */
+}
+
+.toggle-label span {
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.switch {
+  display: grid;
+  align-content: center;
+  position: relative;
+  width: 3rem;
+  height: 1rem;
+  background-color: var(--secondary);
+  border-radius: 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+input[type='checkbox'] {
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: var(--dark-color);
+  border-radius: 50%;
+  margin: 0;
+  cursor: pointer;
+  transition: margin 0.3s, background-color 0.7s;
+}
+
+input[type='checkbox']:checked {
+  background-color: var(--active);
+  margin-left: 1.5rem;
+  transition: margin 0.3s, background-color 0.7s;
+}
+
+.toggle-label .preview-image {
+  position: absolute;
+  top: -6.2rem;
+  right: 2rem;
+  width: 4rem;
+  height: 4.2rem;
+  margin-left: 1rem;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/1971px-Firefox_logo%2C_2019.svg.png');
+  background-size: cover;
+  outline: 0.1rem solid var(--dark-color);
+  /* filter: grayscale(50%); */
+}
+
+.toggle-label .preview-image:after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: -5rem;
+  width: 4rem;
+  height: 4.2rem;
+  margin-left: 0.5rem;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/1971px-Firefox_logo%2C_2019.svg.png');
+  background-size: cover;
+  filter: drop-shadow(0.1rem 0.1rem 0 var(--dark-color));
+  transition: filter 0.7s;
+}
+
+.toggle-label .preview-image:before {
+  content: 'VS';
+  position: absolute;
+  bottom: -1.5rem;
+  right: -1.3rem;
+}
+
+.toggle-label input[type='checkbox']:checked + .preview-image:after {
+  filter: drop-shadow(0.15rem 0.15rem 0 var(--active));
+  transition: filter 0.7s;
+}
+
+.toggle-label input[type='checkbox'] + .preview-image {
+  outline: 0.15rem solid var(--active);
+  transition: outline 0.3s;
+}
+
+.toggle-label input[type='checkbox']:checked + .preview-image {
+  outline: 0.1rem solid var(--dark-color);
+  transition: outline 0.3s;
+}
+</style>

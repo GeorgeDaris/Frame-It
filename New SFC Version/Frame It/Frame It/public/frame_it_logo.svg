@@ -1,0 +1,11 @@
+<svg width="139" height="152" viewBox="0 0 139 152" fill="none" xmlns="http://www.w3.org/2000/svg">
+<style>
+    @media (prefers-color-scheme: light) {
+      rect { fill: #2C2C2C }
+    }
+  </style>
+<rect x="34" y="6" width="105" height="6" rx="3" fill="white"/>
+<rect x="22" width="152" height="5" rx="2.5" transform="rotate(90 22 0)" fill="white"/>
+<rect x="128" y="129" width="128" height="8.99999" rx="4.49999" transform="rotate(-180 128 129)" fill="white"/>
+<rect x="121" y="133" width="124" height="3.00001" rx="1.5" transform="rotate(-90 121 133)" fill="white"/>
+</svg>

@@ -1,0 +1,25 @@
+.horizontal-body {
+  width: 45rem;
+  min-height: 20rem;
+  transition: width 0.7s, minHeight 0.3s;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 2.5fr 0.5fr 3fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  transition: display 0.3s;
+}
+
+.vertical-hr {
+  width: 0.2rem;
+  min-height: 8rem;
+  align-self: center;
+  transition: height 0.3s;
+}
+
+#horizontal-gallery {
+  max-height: 17rem;
+  max-width: 24rem;
+}
